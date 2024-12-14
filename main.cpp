@@ -8,10 +8,14 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 constexpr GLint WIDTH = 800, HEIGHT = 600;
 
 GLuint VAO, VBO, shader;
-GLfloat uniformXmove;
+GLint uniformModel;
 
 bool direction = true;
 float triOffset = 0.0f;
@@ -117,7 +121,7 @@ void CompileShaders() {
         printf("ERROR::PROGRAM_VALIDATION_ERROR:\n%s\n", eLog);
     }
 
-    uniformXmove = glGetUniformLocation(shader, "xMove");
+    uniformModel = glGetUniformLocation(shader, "model");
 }
 
 int main()
@@ -179,7 +183,10 @@ int main()
 
         glUseProgram(shader);
 
-        glUniform1f(uniformXmove, triOffset);
+        auto model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(triOffset, 0.0f, 0.0f));
+
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 
         glBindVertexArray(VAO);
 
