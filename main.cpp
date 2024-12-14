@@ -16,7 +16,7 @@ constexpr GLint WIDTH = 800, HEIGHT = 600;
 constexpr float toRadians = 3.14159265359f / 180.0f;
 
 GLuint VAO, VBO, shader;
-GLint uniformModel;
+GLint uniformModel, uniformProjection;
 
 bool direction = true;
 float triOffset = 0.0f;
@@ -125,6 +125,7 @@ void CompileShaders() {
     }
 
     uniformModel = glGetUniformLocation(shader, "model");
+    uniformProjection = glGetUniformLocation(shader, "projection");
 }
 
 int main()
@@ -161,12 +162,14 @@ int main()
         return -3;
     }
 
+    glEnable(GL_DEPTH_TEST);
+
     glViewport(0, 0, bufferWidth, bufferHeight);
 
     CreateTriangle();
     CompileShaders();
 
-    glEnable(GL_DEPTH_TEST);
+    glm::mat4 projection = glm::perspective(45.0f, static_cast<GLfloat>(bufferWidth) / static_cast<GLfloat>(bufferHeight), 0.1f, 100.0f);
 
     while (!glfwWindowShouldClose(mainWindow)) {
         glfwPollEvents();
@@ -192,10 +195,11 @@ int main()
         glUseProgram(shader);
 
         auto model = glm::mat4(1.0f);
-        // model = glm::translate(model, glm::vec3(triOffset, 0.0f, 0.0f));
-        model = glm::rotate(model, curAngle * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, -2.5f));
+        // model = glm::rotate(model, curAngle * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
 
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
 
         glBindVertexArray(VAO);
 
