@@ -1,0 +1,4 @@
+/Users/prkaaviya/CLionProjects/try8/build/CMakeFiles/glad.dir
+/Users/prkaaviya/CLionProjects/try8/build/CMakeFiles/try8.dir
+/Users/prkaaviya/CLionProjects/try8/build/CMakeFiles/edit_cache.dir
+/Users/prkaaviya/CLionProjects/try8/build/CMakeFiles/rebuild_cache.dir

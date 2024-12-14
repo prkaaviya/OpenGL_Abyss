@@ -15,7 +15,13 @@ find_package(glew REQUIRED)
 find_package(glm CONFIG REQUIRED)
 find_package(assimp REQUIRED)
 
-add_executable(try8 main.cpp)
+add_executable(try8 main.cpp
+        Mesh.cpp
+        Mesh.h
+        Window.cpp
+        Window.h
+        Shader.cpp
+        Shader.h)
 
 target_link_libraries(try8 PRIVATE glad)
 target_link_libraries(try8 PRIVATE /Users/prkaaviya/CLionProjects/try8/Dependencies/lib/GL/libGLEW.dylib)

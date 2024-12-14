@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/Users/prkaaviya/CLionProjects/try8/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/glad.dir/Dependencies/glad/src/glad.c.o -c /Users/prkaaviya/CLionProjects/try8/Dependencies/glad/src/glad.c",
+  "file": "/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/src/glad.c",
+  "output": "CMakeFiles/glad.dir/Dependencies/glad/src/glad.c.o"
+},
+{
+  "directory": "/Users/prkaaviya/CLionProjects/try8/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/try8.dir/main.cpp.o -c /Users/prkaaviya/CLionProjects/try8/main.cpp",
+  "file": "/Users/prkaaviya/CLionProjects/try8/main.cpp",
+  "output": "CMakeFiles/try8.dir/main.cpp.o"
+},
+{
+  "directory": "/Users/prkaaviya/CLionProjects/try8/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/try8.dir/Mesh.cpp.o -c /Users/prkaaviya/CLionProjects/try8/Mesh.cpp",
+  "file": "/Users/prkaaviya/CLionProjects/try8/Mesh.cpp",
+  "output": "CMakeFiles/try8.dir/Mesh.cpp.o"
+},
+{
+  "directory": "/Users/prkaaviya/CLionProjects/try8/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/try8.dir/Window.cpp.o -c /Users/prkaaviya/CLionProjects/try8/Window.cpp",
+  "file": "/Users/prkaaviya/CLionProjects/try8/Window.cpp",
+  "output": "CMakeFiles/try8.dir/Window.cpp.o"
+},
+{
+  "directory": "/Users/prkaaviya/CLionProjects/try8/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/try8.dir/Shader.cpp.o -c /Users/prkaaviya/CLionProjects/try8/Shader.cpp",
+  "file": "/Users/prkaaviya/CLionProjects/try8/Shader.cpp",
+  "output": "CMakeFiles/try8.dir/Shader.cpp.o"
+}
+]
