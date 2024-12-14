@@ -142,6 +142,30 @@ try8/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/build
 .PHONY : try8/fast
 
+Camera.o: Camera.cpp.o
+.PHONY : Camera.o
+
+# target to build an object file
+Camera.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Camera.cpp.o
+.PHONY : Camera.cpp.o
+
+Camera.i: Camera.cpp.i
+.PHONY : Camera.i
+
+# target to preprocess a source file
+Camera.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Camera.cpp.i
+.PHONY : Camera.cpp.i
+
+Camera.s: Camera.cpp.s
+.PHONY : Camera.s
+
+# target to generate assembly for a file
+Camera.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Camera.cpp.s
+.PHONY : Camera.cpp.s
+
 Dependencies/glad/src/glad.o: Dependencies/glad/src/glad.c.o
 .PHONY : Dependencies/glad/src/glad.o
 
@@ -272,6 +296,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... glad"
 	@echo "... try8"
+	@echo "... Camera.o"
+	@echo "... Camera.i"
+	@echo "... Camera.s"
 	@echo "... Dependencies/glad/src/glad.o"
 	@echo "... Dependencies/glad/src/glad.i"
 	@echo "... Dependencies/glad/src/glad.s"

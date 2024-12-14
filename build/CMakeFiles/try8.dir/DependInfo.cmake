@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/prkaaviya/CLionProjects/try8/Camera.cpp" "CMakeFiles/try8.dir/Camera.cpp.o" "gcc" "CMakeFiles/try8.dir/Camera.cpp.o.d"
   "/Users/prkaaviya/CLionProjects/try8/Mesh.cpp" "CMakeFiles/try8.dir/Mesh.cpp.o" "gcc" "CMakeFiles/try8.dir/Mesh.cpp.o.d"
   "/Users/prkaaviya/CLionProjects/try8/Shader.cpp" "CMakeFiles/try8.dir/Shader.cpp.o" "gcc" "CMakeFiles/try8.dir/Shader.cpp.o.d"
   "/Users/prkaaviya/CLionProjects/try8/Window.cpp" "CMakeFiles/try8.dir/Window.cpp.o" "gcc" "CMakeFiles/try8.dir/Window.cpp.o.d"

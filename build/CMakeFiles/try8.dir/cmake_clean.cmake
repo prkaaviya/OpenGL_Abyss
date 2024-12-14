@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/try8.dir/Camera.cpp.o"
+  "CMakeFiles/try8.dir/Camera.cpp.o.d"
   "CMakeFiles/try8.dir/Mesh.cpp.o"
   "CMakeFiles/try8.dir/Mesh.cpp.o.d"
   "CMakeFiles/try8.dir/Shader.cpp.o"

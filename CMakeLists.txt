@@ -21,7 +21,11 @@ add_executable(try8 main.cpp
         Window.cpp
         Window.h
         Shader.cpp
-        Shader.h)
+        Shader.h
+        stb_image.h
+        Camera.cpp
+        Camera.h
+)
 
 target_link_libraries(try8 PRIVATE glad)
 target_link_libraries(try8 PRIVATE /Users/prkaaviya/CLionProjects/try8/Dependencies/lib/GL/libGLEW.dylib)

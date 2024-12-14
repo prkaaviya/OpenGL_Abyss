@@ -28,5 +28,11 @@
   "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/try8.dir/Shader.cpp.o -c /Users/prkaaviya/CLionProjects/try8/Shader.cpp",
   "file": "/Users/prkaaviya/CLionProjects/try8/Shader.cpp",
   "output": "CMakeFiles/try8.dir/Shader.cpp.o"
+},
+{
+  "directory": "/Users/prkaaviya/CLionProjects/try8/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/try8.dir/Camera.cpp.o -c /Users/prkaaviya/CLionProjects/try8/Camera.cpp",
+  "file": "/Users/prkaaviya/CLionProjects/try8/Camera.cpp",
+  "output": "CMakeFiles/try8.dir/Camera.cpp.o"
 }
 ]

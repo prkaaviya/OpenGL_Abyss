@@ -119,12 +119,12 @@ CMakeFiles/glad.dir/clean:
 CMakeFiles/try8.dir/all: CMakeFiles/glad.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/prkaaviya/CLionProjects/try8/build/CMakeFiles --progress-num=3,4,5,6,7 "Built target try8"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/prkaaviya/CLionProjects/try8/build/CMakeFiles --progress-num=3,4,5,6,7,8 "Built target try8"
 .PHONY : CMakeFiles/try8.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/try8.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/prkaaviya/CLionProjects/try8/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/prkaaviya/CLionProjects/try8/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/try8.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/prkaaviya/CLionProjects/try8/build/CMakeFiles 0
 .PHONY : CMakeFiles/try8.dir/rule
