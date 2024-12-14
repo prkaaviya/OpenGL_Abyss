@@ -1,5 +1,6 @@
 #include <cstdio>
 #include <cstring>
+#include <cmath>
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -10,6 +11,12 @@
 constexpr GLint WIDTH = 800, HEIGHT = 600;
 
 GLuint VAO, VBO, shader;
+GLfloat uniformXmove;
+
+bool direction = true;
+float triOffset = 0.0f;
+float triMaxOffset = 0.5f;
+float triIncrement = 0.005f;
 
 std::string ReadFile(const char* filePath) {
     std::ifstream file(filePath);
@@ -110,6 +117,7 @@ void CompileShaders() {
         printf("ERROR::PROGRAM_VALIDATION_ERROR:\n%s\n", eLog);
     }
 
+    uniformXmove = glGetUniformLocation(shader, "xMove");
 }
 
 int main()
@@ -156,10 +164,22 @@ int main()
     while (!glfwWindowShouldClose(mainWindow)) {
         glfwPollEvents();
 
+        if (direction) {
+            triOffset += triIncrement;
+        } else {
+            triOffset -= triIncrement;
+        }
+
+        if (abs(triOffset) >= triMaxOffset) {
+            direction = !direction;
+        }
+
         glClearColor(0.2f, 0.0f, 0.8f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         glUseProgram(shader);
+
+        glUniform1f(uniformXmove, triOffset);
 
         glBindVertexArray(VAO);
 
