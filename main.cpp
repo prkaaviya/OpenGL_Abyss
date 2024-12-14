@@ -1,13 +1,12 @@
 #include <cmath>
 #include <vector>
-#include <cstdio>
-#include <cstring>
 #include <fstream>
 #include <sstream>
-#include <iostream>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+
+#define GLM_FORCE_CTOR_INIT
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -60,14 +59,14 @@ void CreateShaders()
 
 int main()
 {
-    mainWindow = Window(800, 600);
+    mainWindow = Window(800, 800);
 	mainWindow.Initialise();
 
 	CreateObjects();
 	CreateShaders();
 
 	GLuint uniformProjection = 0, uniformModel = 0;
-	glm::mat4 projection = glm::perspective(glm::radians(45.0f), (GLfloat)mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 100.0f);
+	glm::mat4 projection = glm::perspective(glm::radians(45.0f), static_cast<GLfloat>(mainWindow.getBufferWidth()) / mainWindow.getBufferHeight(), 0.1f, 100.0f);
     
     while (!mainWindow.getShouldClose())
 	{
@@ -83,15 +82,17 @@ int main()
 		glm::mat4 model(1.0f);	
 
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -2.5f));
-		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 1.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
 		meshList[0]->RenderMesh();
 
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, 1.0f, -2.5f));
-		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 1.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+    	glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+
 		meshList[1]->RenderMesh();
 
 		glUseProgram(0);

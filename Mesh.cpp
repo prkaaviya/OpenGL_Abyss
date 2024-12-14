@@ -7,7 +7,7 @@ Mesh::Mesh() {
     indexCount = 0;
 }
 
-void Mesh::CreateMesh(GLfloat *vertices, unsigned int *indices, unsigned int numOfVertices, unsigned int numOfIndices) {
+void Mesh::CreateMesh(const GLfloat *vertices, const unsigned int *indices, const unsigned int numOfVertices, const unsigned int numOfIndices) {
     indexCount = numOfIndices;
 
     glGenVertexArrays(1, &VAO);

@@ -32,7 +32,7 @@ std::string Shader::ReadFile(const char* fileLocation)
 		return "";
 	}
 
-	std::string line = "";
+	std::string line;
 	while (!fileStream.eof())
 	{
 		std::getline(fileStream, line);
@@ -63,7 +63,7 @@ void Shader::CompileShader(const char* vertexCode, const char* fragmentCode)
 	glGetProgramiv(shaderID, GL_LINK_STATUS, &result);
 	if (!result)
 	{
-		glGetProgramInfoLog(shaderID, sizeof(eLog), NULL, eLog);
+		glGetProgramInfoLog(shaderID, sizeof(eLog), nullptr, eLog);
 		printf("ERROR: Failed to link program: '%s'\n", eLog);
 		return;
 	}
@@ -72,7 +72,7 @@ void Shader::CompileShader(const char* vertexCode, const char* fragmentCode)
 	glGetProgramiv(shaderID, GL_VALIDATE_STATUS, &result);
 	if (!result)
 	{
-		glGetProgramInfoLog(shaderID, sizeof(eLog), NULL, eLog);
+		glGetProgramInfoLog(shaderID, sizeof(eLog), nullptr, eLog);
 		printf("ERROR: Failed to validate program: '%s'\n", eLog);
 	}
 
@@ -80,16 +80,16 @@ void Shader::CompileShader(const char* vertexCode, const char* fragmentCode)
 	uniformModel = glGetUniformLocation(shaderID, "model");
 }
 
-GLuint Shader::GetProjectionLocation()
+GLuint Shader::GetProjectionLocation() const
 {
 	return uniformProjection;
 }
-GLuint Shader::GetModelLocation()
+GLuint Shader::GetModelLocation() const
 {
 	return uniformModel;
 }
 
-void Shader::UseShader()
+void Shader::UseShader() const
 {
 	glUseProgram(shaderID);
 }
@@ -107,9 +107,9 @@ void Shader::ClearShader()
 }
 
 
-void Shader::AddShader(GLuint theProgram, const char* shaderCode, GLenum shaderType)
+void Shader::AddShader(GLuint theProgram, const char* shaderCode, const GLenum shaderType)
 {
-	GLuint theShader = glCreateShader(shaderType);
+	const GLuint theShader = glCreateShader(shaderType);
 
 	const GLchar* theCode[1];
 	theCode[0] = shaderCode;
@@ -126,7 +126,7 @@ void Shader::AddShader(GLuint theProgram, const char* shaderCode, GLenum shaderT
 	glGetShaderiv(theShader, GL_COMPILE_STATUS, &result);
 	if (!result)
 	{
-		glGetShaderInfoLog(theShader, sizeof(eLog), NULL, eLog);
+		glGetShaderInfoLog(theShader, sizeof(eLog), nullptr, eLog);
 		printf("ERROR: Failed to compile the %d shader: '%s'\n", shaderType, eLog);
 		return;
 	}

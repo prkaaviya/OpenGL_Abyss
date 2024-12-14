@@ -1,7 +1,10 @@
-#version 330 core
+#version 330
+
+in vec4 vCol;
 
 out vec4 colour;
 
-void main() {
-    colour = vec4(1.0f, 0.0, 0.0, 1.0);
+void main()
+{
+	colour = vCol;
 }

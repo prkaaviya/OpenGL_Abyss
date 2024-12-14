@@ -14,12 +14,12 @@ public:
 
 	int Initialise();
 
-	GLint getBufferWidth() { return bufferWidth; }
-	GLint getBufferHeight() { return bufferHeight; }
+	[[nodiscard]] GLint getBufferWidth() const { return bufferWidth; }
+	[[nodiscard]] GLint getBufferHeight() const { return bufferHeight; }
 
-	bool getShouldClose() { return glfwWindowShouldClose(mainWindow); }
+	[[nodiscard]] bool getShouldClose() const { return glfwWindowShouldClose(mainWindow); }
 
-	void swapBuffers() { glfwSwapBuffers(mainWindow); }
+	void swapBuffers() const { glfwSwapBuffers(mainWindow); }
 
 	~Window();
 

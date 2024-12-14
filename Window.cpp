@@ -6,7 +6,7 @@ Window::Window()
 	height = 600;
 }
 
-Window::Window(GLint windowWidth, GLint windowHeight)
+Window::Window(const GLint windowWidth, const GLint windowHeight)
 {
 	width = windowWidth;
 	height = windowHeight;
@@ -26,7 +26,7 @@ int Window::Initialise()
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-	mainWindow = glfwCreateWindow(width, height, "Abyss", NULL, NULL);
+	mainWindow = glfwCreateWindow(width, height, "Abyss", nullptr, nullptr);
 	if (!mainWindow)
 	{
 		printf("ERROR: Failed to create GLFW window.\n");
@@ -40,10 +40,9 @@ int Window::Initialise()
 
 	glewExperimental = GL_TRUE;
 
-	GLenum error = glewInit();
-	if (error != GLEW_OK)
+	if (const GLenum error = glewInit(); error != GLEW_OK)
 	{
-		printf("ERROR: %s\n", glewGetErrorString(error));
+		printf("ERROR: %p\n", glewGetErrorString(error));
 		glfwDestroyWindow(mainWindow);
 		glfwTerminate();
 		return -3;
