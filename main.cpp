@@ -14,11 +14,14 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "Mesh.h"
-#include "Light.h"
 #include "Camera.h"
 #include "Shader.h"
 #include "Texture.h"
 #include "Window.h"
+#include "Material.h"
+#include "SpotLight.h"
+#include "PointLight.h"
+#include "DirectionalLight.h"
 
 constexpr float toRadians = 3.14159265359f / 180.0f;
 
@@ -29,8 +32,14 @@ Camera camera;
 
 Texture containerTexture;
 Texture metalBoxTexture;
+Texture plainTexture;
 
-Light mainLight;
+Material shinyMaterial;
+Material dullMaterial;
+
+DirectionalLight mainLight;
+PointLight pointLights[MAX_POINT_LIGHTS];
+SpotLight spotLights[MAX_SPOT_LIGHTS];
 
 GLfloat deltaTime = 0.0f;
 GLfloat lastTime = 0.0f;
@@ -107,10 +116,10 @@ void CreateObjects() {
 		-1.0f,  1.0f, -1.0f,   0.0f, 1.0f,   0.0f, 0.0f, 0.0f, // Top-left
 
 		// Right face
-		 1.0f, -1.0f, -1.0f,   0.0f, 0.0f,   0.0f, 0.0f, 0.0f,// Bottom-left
-		 1.0f, -1.0f,  1.0f,   1.0f, 0.0f,   0.0f, 0.0f, 0.0f,// Bottom-right
-		 1.0f,  1.0f,  1.0f,   1.0f, 1.0f,   0.0f, 0.0f, 0.0f,// Top-right
-		 1.0f,  1.0f, -1.0f,   0.0f, 1.0f,   0.0f, 0.0f, 0.0f,// Top-left
+		1.0f, -1.0f, -1.0f,   0.0f, 0.0f,   0.0f, 0.0f, 0.0f,// Bottom-left
+		1.0f, -1.0f,  1.0f,   1.0f, 0.0f,   0.0f, 0.0f, 0.0f,// Bottom-right
+		1.0f,  1.0f,  1.0f,   1.0f, 1.0f,   0.0f, 0.0f, 0.0f,// Top-right
+		1.0f,  1.0f, -1.0f,   0.0f, 1.0f,   0.0f, 0.0f, 0.0f,// Top-left
 
 		// Top face
 		-1.0f,  1.0f, -1.0f,   0.0f, 0.0f,   0.0f, 0.0f, 0.0f, // Bottom-left
@@ -125,6 +134,18 @@ void CreateObjects() {
 		-1.0f, -1.0f,  1.0f,   0.0f, 1.0f,   0.0f, 0.0f, 0.0f, // Top-left
 	};
 
+	const unsigned int floorIndices[] = {
+		0, 2, 1,
+		1, 2, 3
+	};
+
+	constexpr GLfloat floorVertices[] = {
+		-10.0f, 0.0f, -10.0f,	0.0f, 0.0f,		0.0f, -1.0f, 0.0f,
+		10.0f, 0.0f, -10.0f,	10.0f, 0.0f,	0.0f, -1.0f, 0.0f,
+		-10.0f, 0.0f, 10.0f,	0.0f, 10.0f,	0.0f, -1.0f, 0.0f,
+		10.0f, 0.0f, 10.0f,		10.0f, 10.0f,	0.0f, -1.0f, 0.0f
+	};
+
 	calcAverageNormals(indices, 36, vertices, 192, 8, 5);
 
 	const auto obj1 = new Mesh();
@@ -134,6 +155,10 @@ void CreateObjects() {
 	const auto obj2 = new Mesh();
 	obj2->CreateMesh(vertices, indices, 192, 36);
 	meshList.push_back(obj2);
+
+	const auto obj3 = new Mesh();
+	obj3->CreateMesh(floorVertices, floorIndices, 32, 6);
+	meshList.push_back(obj3);
 }
 
 void CreateShaders()
@@ -145,25 +170,58 @@ void CreateShaders()
 
 int main()
 {
-    mainWindow = Window(800, 800);
+    mainWindow = Window(1366, 768);
 	mainWindow.Initialise();
 
 	CreateObjects();
 	CreateShaders();
 
-	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f, 1.0f, 0.5f);
+	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 1.0f, 0.5f);
 
 	containerTexture = Texture("/Users/prkaaviya/CLionProjects/try8/Resources/Textures/container.jpg");
 	containerTexture.LoadTextureA();
 	metalBoxTexture = Texture("/Users/prkaaviya/CLionProjects/try8/Resources/Textures/metalbox.jpg");
 	metalBoxTexture.LoadTextureA();
+	plainTexture = Texture("/Users/prkaaviya/CLionProjects/try8/Resources/Textures/rock.jpg");
+	plainTexture.LoadTextureA();
 
-	mainLight = Light(1.0f, 1.0f, 1.0f, 0.2f,
-					2.0f, -1.0f, -2.0f, 1.0f);
+	shinyMaterial = Material(4.0f, 256);
+	dullMaterial = Material(0.3f, 4);
 
-	GLfloat uniformProjection = 0, uniformModel = 0, uniformView = 0,
-			uniformAmbientIntensity = 0, uniformAmbientColor = 0,
-			uniformDirection = 0, uniformDiffuseIntensity = 0;
+	mainLight = DirectionalLight(1.0f, 1.0f, 1.0f, 
+								0.1f, 0.1f,
+								0.0f, 0.0f, -1.0f);
+
+	unsigned int pointLightCount = 0;
+	pointLights[0] = PointLight(0.0f, 0.0f, 1.0f,
+								0.0f, 0.1f,
+								0.0f, 0.0f, 0.0f,
+								0.3f, 0.2f, 0.1f);
+	//pointLightCount++;
+	pointLights[1] = PointLight(0.0f, 1.0f, 0.0f,
+								0.0f, 0.1f,
+								-4.0f, 2.0f, 0.0f,
+								0.3f, 0.1f, 0.1f);
+	//pointLightCount++;
+
+	unsigned int spotLightCount = 0;
+	spotLights[0] = SpotLight(1.0f, 1.0f, 1.0f,
+						0.0f, 2.0f,
+						0.0f, 0.0f, 0.0f,
+						0.0f, -1.0f, 0.0f,
+						1.0f, 0.0f, 0.0f,
+						20.0f);
+	spotLightCount++;
+	spotLights[1] = SpotLight(1.0f, 1.0f, 1.0f,
+		0.0f, 1.0f,
+		0.0f, -1.5f, 0.0f,
+		-100.0f, -1.0f, 0.0f,
+		1.0f, 0.0f, 0.0f,
+		20.0f);
+	spotLightCount++;
+
+	GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0, uniformEyePosition = 0,
+		uniformSpecularIntensity = 0, uniformShininess = 0;
 	glm::mat4 projection = glm::perspective(glm::radians(45.0f), static_cast<GLfloat>(mainWindow.getBufferWidth()) / mainWindow.getBufferHeight(), 0.1f, 100.0f);
     
     while (!mainWindow.getShouldClose())
@@ -184,29 +242,45 @@ int main()
 		uniformModel = shaderList[0].GetModelLocation();
 		uniformProjection = shaderList[0].GetProjectionLocation();
 		uniformView = shaderList[0].GetViewLocation();
-    	uniformAmbientColor = shaderList[0].GetAmbientColourLocation();
-    	uniformAmbientIntensity = shaderList[0].GetAmbientIntensityLocation();
-    	uniformDirection = shaderList[0].GetDirectionLocation();
-    	uniformDiffuseIntensity = shaderList[0].GetDiffuseIntensityLocation();
+    	uniformEyePosition = shaderList[0].GetEyePositionLocation();
+		uniformSpecularIntensity = shaderList[0].GetSpecularIntensityLocation();
+		uniformShininess = shaderList[0].GetShininessLocation();
 
-    	mainLight.UseLight(uniformAmbientIntensity, uniformAmbientColor,
-    						uniformDiffuseIntensity, uniformDirection);
+		glm::vec3 lowerLight = camera.getCameraPosition();
+		lowerLight.y -= 0.3f;
+		spotLights[0].SetFlash(lowerLight, camera.getCameraDirection());
 
-		glm::mat4 model(1.0f);	
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -2.5f));
-		// model = glm::scale(model, glm::vec3(0.2f, 0.2f, 1.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		shaderList[0].SetDirectionalLight(&mainLight);
+		shaderList[0].SetPointLights(pointLights, pointLightCount);
+		shaderList[0].SetSpotLights(spotLights, spotLightCount);
+
 		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
 		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
+		glUniform3f(uniformEyePosition, camera.getCameraPosition().x, camera.getCameraPosition().y, camera.getCameraPosition().z);
+
+		glm::mat4 model(1.0f);
+		model = glm::translate(model, glm::vec3(0.0f, 0.4f, -2.5f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
     	containerTexture.UseTexture();
+		shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
     	meshList[0]->RenderMesh();
 
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(3.0f, 0.0f, -2.5f));
-		// model = glm::scale(model, glm::vec3(0.2f, 0.2f, 1.0f));
+		model = glm::translate(model, glm::vec3(3.0f, 0.4f, -2.5f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		dullMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
     	metalBoxTexture.UseTexture();
     	meshList[1]->RenderMesh();
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		plainTexture.UseTexture();
+		shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[2]->RenderMesh();
 
 		glUseProgram(0);
 

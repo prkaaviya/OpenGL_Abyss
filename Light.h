@@ -6,25 +6,19 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 
-class Light {
+class Light
+{
 public:
-    Light();
-    Light(GLfloat red, GLfloat green, GLfloat blue, GLfloat aIntensity,
-        GLfloat xDir, GLfloat yDir, GLfloat zDir, GLfloat dIntensity);
+	Light();
+	Light(GLfloat red, GLfloat green, GLfloat blue, 
+			GLfloat aIntensity, GLfloat dIntensity);
 
-    void UseLight(GLfloat ambientIntensityLocation, GLfloat ambientColourLocation,
-        GLfloat diffuseIntensityLocation, GLfloat directionLocation) const;
+	~Light();
 
-    ~Light();
-
-private:
-    glm::vec3 colour{};
-    GLfloat ambientIntensity;
-
-    glm::vec3 direction{};
-    GLfloat diffuseIntensity;
+protected:
+	glm::vec3 colour;
+	GLfloat ambientIntensity;
+	GLfloat diffuseIntensity;
 };
-
-
 
 #endif //LIGHT_H

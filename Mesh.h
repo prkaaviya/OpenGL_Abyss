@@ -18,6 +18,4 @@ private:
     GLsizei indexCount;
 };
 
-
-
 #endif //MESH_H

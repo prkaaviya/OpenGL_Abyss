@@ -190,6 +190,78 @@ Dependencies/glad/src/glad.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/glad.dir/build.make CMakeFiles/glad.dir/Dependencies/glad/src/glad.c.s
 .PHONY : Dependencies/glad/src/glad.c.s
 
+DirectionalLight.o: DirectionalLight.cpp.o
+.PHONY : DirectionalLight.o
+
+# target to build an object file
+DirectionalLight.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/DirectionalLight.cpp.o
+.PHONY : DirectionalLight.cpp.o
+
+DirectionalLight.i: DirectionalLight.cpp.i
+.PHONY : DirectionalLight.i
+
+# target to preprocess a source file
+DirectionalLight.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/DirectionalLight.cpp.i
+.PHONY : DirectionalLight.cpp.i
+
+DirectionalLight.s: DirectionalLight.cpp.s
+.PHONY : DirectionalLight.s
+
+# target to generate assembly for a file
+DirectionalLight.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/DirectionalLight.cpp.s
+.PHONY : DirectionalLight.cpp.s
+
+Light.o: Light.cpp.o
+.PHONY : Light.o
+
+# target to build an object file
+Light.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Light.cpp.o
+.PHONY : Light.cpp.o
+
+Light.i: Light.cpp.i
+.PHONY : Light.i
+
+# target to preprocess a source file
+Light.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Light.cpp.i
+.PHONY : Light.cpp.i
+
+Light.s: Light.cpp.s
+.PHONY : Light.s
+
+# target to generate assembly for a file
+Light.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Light.cpp.s
+.PHONY : Light.cpp.s
+
+Material.o: Material.cpp.o
+.PHONY : Material.o
+
+# target to build an object file
+Material.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Material.cpp.o
+.PHONY : Material.cpp.o
+
+Material.i: Material.cpp.i
+.PHONY : Material.i
+
+# target to preprocess a source file
+Material.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Material.cpp.i
+.PHONY : Material.cpp.i
+
+Material.s: Material.cpp.s
+.PHONY : Material.s
+
+# target to generate assembly for a file
+Material.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Material.cpp.s
+.PHONY : Material.cpp.s
+
 Mesh.o: Mesh.cpp.o
 .PHONY : Mesh.o
 
@@ -214,6 +286,30 @@ Mesh.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Mesh.cpp.s
 .PHONY : Mesh.cpp.s
 
+PointLight.o: PointLight.cpp.o
+.PHONY : PointLight.o
+
+# target to build an object file
+PointLight.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/PointLight.cpp.o
+.PHONY : PointLight.cpp.o
+
+PointLight.i: PointLight.cpp.i
+.PHONY : PointLight.i
+
+# target to preprocess a source file
+PointLight.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/PointLight.cpp.i
+.PHONY : PointLight.cpp.i
+
+PointLight.s: PointLight.cpp.s
+.PHONY : PointLight.s
+
+# target to generate assembly for a file
+PointLight.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/PointLight.cpp.s
+.PHONY : PointLight.cpp.s
+
 Shader.o: Shader.cpp.o
 .PHONY : Shader.o
 
@@ -237,6 +333,54 @@ Shader.s: Shader.cpp.s
 Shader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Shader.cpp.s
 .PHONY : Shader.cpp.s
+
+SpotLight.o: SpotLight.cpp.o
+.PHONY : SpotLight.o
+
+# target to build an object file
+SpotLight.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/SpotLight.cpp.o
+.PHONY : SpotLight.cpp.o
+
+SpotLight.i: SpotLight.cpp.i
+.PHONY : SpotLight.i
+
+# target to preprocess a source file
+SpotLight.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/SpotLight.cpp.i
+.PHONY : SpotLight.cpp.i
+
+SpotLight.s: SpotLight.cpp.s
+.PHONY : SpotLight.s
+
+# target to generate assembly for a file
+SpotLight.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/SpotLight.cpp.s
+.PHONY : SpotLight.cpp.s
+
+Texture.o: Texture.cpp.o
+.PHONY : Texture.o
+
+# target to build an object file
+Texture.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Texture.cpp.o
+.PHONY : Texture.cpp.o
+
+Texture.i: Texture.cpp.i
+.PHONY : Texture.i
+
+# target to preprocess a source file
+Texture.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Texture.cpp.i
+.PHONY : Texture.cpp.i
+
+Texture.s: Texture.cpp.s
+.PHONY : Texture.s
+
+# target to generate assembly for a file
+Texture.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Texture.cpp.s
+.PHONY : Texture.cpp.s
 
 Window.o: Window.cpp.o
 .PHONY : Window.o
@@ -302,12 +446,30 @@ help:
 	@echo "... Dependencies/glad/src/glad.o"
 	@echo "... Dependencies/glad/src/glad.i"
 	@echo "... Dependencies/glad/src/glad.s"
+	@echo "... DirectionalLight.o"
+	@echo "... DirectionalLight.i"
+	@echo "... DirectionalLight.s"
+	@echo "... Light.o"
+	@echo "... Light.i"
+	@echo "... Light.s"
+	@echo "... Material.o"
+	@echo "... Material.i"
+	@echo "... Material.s"
 	@echo "... Mesh.o"
 	@echo "... Mesh.i"
 	@echo "... Mesh.s"
+	@echo "... PointLight.o"
+	@echo "... PointLight.i"
+	@echo "... PointLight.s"
 	@echo "... Shader.o"
 	@echo "... Shader.i"
 	@echo "... Shader.s"
+	@echo "... SpotLight.o"
+	@echo "... SpotLight.i"
+	@echo "... SpotLight.s"
+	@echo "... Texture.o"
+	@echo "... Texture.i"
+	@echo "... Texture.s"
 	@echo "... Window.o"
 	@echo "... Window.i"
 	@echo "... Window.s"

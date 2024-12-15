@@ -7,6 +7,12 @@
 
 #include <GL/glew.h>
 
+#include "CommonValues.h"
+
+#include "DirectionalLight.h"
+#include "PointLight.h"
+#include "SpotLight.h"
+
 class Shader
 {
 public:
@@ -24,6 +30,13 @@ public:
 	[[nodiscard]] GLuint GetAmbientColourLocation() const;
 	[[nodiscard]] GLuint GetDiffuseIntensityLocation() const;
 	[[nodiscard]] GLuint GetDirectionLocation() const;
+	[[nodiscard]] GLuint GetSpecularIntensityLocation() const;
+	[[nodiscard]] GLuint GetShininessLocation() const;
+	[[nodiscard]] GLuint GetEyePositionLocation() const;
+
+	void SetDirectionalLight(DirectionalLight * dLight) const;
+	void SetPointLights(PointLight * pLight, unsigned int lightCount) const;
+	void SetSpotLights(SpotLight * sLight, unsigned int lightCount) const;
 
 	void UseShader() const;
 	void ClearShader();
@@ -31,9 +44,49 @@ public:
 	~Shader();
 
 private:
-	GLuint shaderID, uniformProjection, uniformModel, uniformView,
-		uniformAmbientIntensity{}, uniformAmbientColour{},
-		uniformDiffuseIntensity{}, uniformDirection{};
+	int pointLightCount;
+	int spotLightCount;
+
+	GLuint shaderID, uniformProjection, uniformModel, uniformView, uniformEyePosition,
+		uniformSpecularIntensity, uniformShininess;
+
+	struct {
+		GLuint uniformColour;
+		GLuint uniformAmbientIntensity;
+		GLuint uniformDiffuseIntensity;
+
+		GLuint uniformDirection;
+	} uniformDirectionalLight;
+
+	GLuint uniformPointLightCount;
+
+	struct {
+		GLuint uniformColour;
+		GLuint uniformAmbientIntensity;
+		GLuint uniformDiffuseIntensity;
+
+		GLuint uniformPosition;
+		GLuint uniformConstant;
+		GLuint uniformLinear;
+		GLuint uniformExponent;
+	} uniformPointLight[MAX_POINT_LIGHTS];
+
+	GLuint uniformSpotLightCount;
+
+	struct {
+		GLuint uniformColour;
+		GLuint uniformAmbientIntensity;
+		GLuint uniformDiffuseIntensity;
+
+		GLuint uniformPosition;
+		GLuint uniformConstant;
+		GLuint uniformLinear;
+		GLuint uniformExponent;
+
+		GLuint uniformDirection;
+		GLuint uniformEdge;
+	} uniformSpotLight[MAX_SPOT_LIGHTS];
+
 
 	void CompileShader(const char* vertexCode, const char* fragmentCode);
 	static void AddShader(GLuint theProgram, const char* shaderCode, GLenum shaderType);

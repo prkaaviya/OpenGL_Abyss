@@ -13,15 +13,39 @@
 },
 {
   "directory": "/Users/prkaaviya/CLionProjects/try8/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/try8.dir/Camera.cpp.o -c /Users/prkaaviya/CLionProjects/try8/Camera.cpp",
+  "file": "/Users/prkaaviya/CLionProjects/try8/Camera.cpp",
+  "output": "CMakeFiles/try8.dir/Camera.cpp.o"
+},
+{
+  "directory": "/Users/prkaaviya/CLionProjects/try8/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/try8.dir/DirectionalLight.cpp.o -c /Users/prkaaviya/CLionProjects/try8/DirectionalLight.cpp",
+  "file": "/Users/prkaaviya/CLionProjects/try8/DirectionalLight.cpp",
+  "output": "CMakeFiles/try8.dir/DirectionalLight.cpp.o"
+},
+{
+  "directory": "/Users/prkaaviya/CLionProjects/try8/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/try8.dir/Light.cpp.o -c /Users/prkaaviya/CLionProjects/try8/Light.cpp",
+  "file": "/Users/prkaaviya/CLionProjects/try8/Light.cpp",
+  "output": "CMakeFiles/try8.dir/Light.cpp.o"
+},
+{
+  "directory": "/Users/prkaaviya/CLionProjects/try8/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/try8.dir/Material.cpp.o -c /Users/prkaaviya/CLionProjects/try8/Material.cpp",
+  "file": "/Users/prkaaviya/CLionProjects/try8/Material.cpp",
+  "output": "CMakeFiles/try8.dir/Material.cpp.o"
+},
+{
+  "directory": "/Users/prkaaviya/CLionProjects/try8/build",
   "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/try8.dir/Mesh.cpp.o -c /Users/prkaaviya/CLionProjects/try8/Mesh.cpp",
   "file": "/Users/prkaaviya/CLionProjects/try8/Mesh.cpp",
   "output": "CMakeFiles/try8.dir/Mesh.cpp.o"
 },
 {
   "directory": "/Users/prkaaviya/CLionProjects/try8/build",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/try8.dir/Window.cpp.o -c /Users/prkaaviya/CLionProjects/try8/Window.cpp",
-  "file": "/Users/prkaaviya/CLionProjects/try8/Window.cpp",
-  "output": "CMakeFiles/try8.dir/Window.cpp.o"
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/try8.dir/PointLight.cpp.o -c /Users/prkaaviya/CLionProjects/try8/PointLight.cpp",
+  "file": "/Users/prkaaviya/CLionProjects/try8/PointLight.cpp",
+  "output": "CMakeFiles/try8.dir/PointLight.cpp.o"
 },
 {
   "directory": "/Users/prkaaviya/CLionProjects/try8/build",
@@ -31,8 +55,20 @@
 },
 {
   "directory": "/Users/prkaaviya/CLionProjects/try8/build",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/try8.dir/Camera.cpp.o -c /Users/prkaaviya/CLionProjects/try8/Camera.cpp",
-  "file": "/Users/prkaaviya/CLionProjects/try8/Camera.cpp",
-  "output": "CMakeFiles/try8.dir/Camera.cpp.o"
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/try8.dir/SpotLight.cpp.o -c /Users/prkaaviya/CLionProjects/try8/SpotLight.cpp",
+  "file": "/Users/prkaaviya/CLionProjects/try8/SpotLight.cpp",
+  "output": "CMakeFiles/try8.dir/SpotLight.cpp.o"
+},
+{
+  "directory": "/Users/prkaaviya/CLionProjects/try8/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/try8.dir/Texture.cpp.o -c /Users/prkaaviya/CLionProjects/try8/Texture.cpp",
+  "file": "/Users/prkaaviya/CLionProjects/try8/Texture.cpp",
+  "output": "CMakeFiles/try8.dir/Texture.cpp.o"
+},
+{
+  "directory": "/Users/prkaaviya/CLionProjects/try8/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/try8.dir/Window.cpp.o -c /Users/prkaaviya/CLionProjects/try8/Window.cpp",
+  "file": "/Users/prkaaviya/CLionProjects/try8/Window.cpp",
+  "output": "CMakeFiles/try8.dir/Window.cpp.o"
 }
 ]

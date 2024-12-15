@@ -24,6 +24,4 @@ private:
     char *fileLocation;
 };
 
-
-
 #endif //TEXTURE_H

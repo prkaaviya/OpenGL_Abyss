@@ -86,6 +86,3 @@ void Texture::ClearTexture() {
 Texture::~Texture() {
     ClearTexture();
 }
-
-
-

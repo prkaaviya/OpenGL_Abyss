@@ -1,6 +1,6 @@
 #include "Camera.h"
 
-Camera::Camera() {}
+Camera::Camera() = default;
 
 Camera::Camera(glm::vec3 startPosition, glm::vec3 startUp, GLfloat startYaw, GLfloat startPitch, GLfloat startMoveSpeed, GLfloat startTurnSpeed)
 {
@@ -66,6 +66,15 @@ glm::mat4 Camera::calculateViewMatrix() const {
 	return glm::lookAt(position, position + front, up);
 }
 
+glm::vec3 Camera::getCameraPosition()
+{
+	return position;
+}
+glm::vec3 Camera::getCameraDirection()
+{
+	return glm::normalize(front);
+}
+
 void Camera::update()
 {
 	front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
@@ -79,5 +88,4 @@ void Camera::update()
 
 
 Camera::~Camera()
-{
-}
+= default;

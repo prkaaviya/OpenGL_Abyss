@@ -16,19 +16,28 @@ find_package(glm CONFIG REQUIRED)
 find_package(assimp REQUIRED)
 
 add_executable(try8 main.cpp
-        Mesh.cpp
-        Mesh.h
-        Window.cpp
-        Window.h
-        Shader.cpp
-        Shader.h
-        stb_image.h
         Camera.cpp
         Camera.h
-        Texture.cpp
-        Texture.h
+        CommonValues.h
+        DirectionalLight.cpp
+        DirectionalLight.h
         Light.cpp
         Light.h
+        Material.cpp
+        Material.h
+        Mesh.cpp
+        Mesh.h
+        PointLight.cpp
+        PointLight.h
+        Shader.cpp
+        Shader.h
+        SpotLight.cpp
+        SpotLight.h
+        stb_image.h
+        Texture.cpp
+        Texture.h
+        Window.cpp
+        Window.h
 )
 
 target_link_libraries(try8 PRIVATE glad)
