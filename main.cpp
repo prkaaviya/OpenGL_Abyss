@@ -122,9 +122,9 @@ int main()
 	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f, 1.0f, 0.5f);
 
 	containerTexture = Texture("/Users/prkaaviya/CLionProjects/try8/Resources/Textures/container.jpg");
-	containerTexture.LoadTexture();
+	containerTexture.LoadTextureA();
 	metalBoxTexture = Texture("/Users/prkaaviya/CLionProjects/try8/Resources/Textures/metalbox.jpg");
-	metalBoxTexture.LoadTexture();
+	metalBoxTexture.LoadTextureA();
 
 	GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0;
 	glm::mat4 projection = glm::perspective(glm::radians(45.0f), static_cast<GLfloat>(mainWindow.getBufferWidth()) / mainWindow.getBufferHeight(), 0.1f, 100.0f);
