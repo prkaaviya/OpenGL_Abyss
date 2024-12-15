@@ -27,6 +27,8 @@ add_executable(try8 main.cpp
         Camera.h
         Texture.cpp
         Texture.h
+        Light.cpp
+        Light.h
 )
 
 target_link_libraries(try8 PRIVATE glad)

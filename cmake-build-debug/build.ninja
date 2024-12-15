@@ -124,6 +124,13 @@ build CMakeFiles/try8.dir/Texture.cpp.o: CXX_COMPILER__try8_unscanned_Debug /Use
   OBJECT_DIR = CMakeFiles/try8.dir
   OBJECT_FILE_DIR = CMakeFiles/try8.dir
 
+build CMakeFiles/try8.dir/Light.cpp.o: CXX_COMPILER__try8_unscanned_Debug /Users/prkaaviya/CLionProjects/try8/Light.cpp || cmake_object_order_depends_target_try8
+  DEP_FILE = CMakeFiles/try8.dir/Light.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -fcolor-diagnostics
+  INCLUDES = -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/try8.dir
+  OBJECT_FILE_DIR = CMakeFiles/try8.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target try8
@@ -132,7 +139,7 @@ build CMakeFiles/try8.dir/Texture.cpp.o: CXX_COMPILER__try8_unscanned_Debug /Use
 #############################################
 # Link the executable try8
 
-build try8: CXX_EXECUTABLE_LINKER__try8_Debug CMakeFiles/try8.dir/main.cpp.o CMakeFiles/try8.dir/Mesh.cpp.o CMakeFiles/try8.dir/Window.cpp.o CMakeFiles/try8.dir/Shader.cpp.o CMakeFiles/try8.dir/Camera.cpp.o CMakeFiles/try8.dir/Texture.cpp.o | libglad.a /Users/prkaaviya/CLionProjects/try8/Dependencies/lib/GL/libGLEW.dylib /opt/homebrew/lib/libassimp.5.4.3.dylib /opt/homebrew/lib/libglfw.3.4.dylib /opt/homebrew/lib/libglm.dylib /Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/usr/lib/libz.tbd || libglad.a
+build try8: CXX_EXECUTABLE_LINKER__try8_Debug CMakeFiles/try8.dir/main.cpp.o CMakeFiles/try8.dir/Mesh.cpp.o CMakeFiles/try8.dir/Window.cpp.o CMakeFiles/try8.dir/Shader.cpp.o CMakeFiles/try8.dir/Camera.cpp.o CMakeFiles/try8.dir/Texture.cpp.o CMakeFiles/try8.dir/Light.cpp.o | libglad.a /Users/prkaaviya/CLionProjects/try8/Dependencies/lib/GL/libGLEW.dylib /opt/homebrew/lib/libassimp.5.4.3.dylib /opt/homebrew/lib/libglfw.3.4.dylib /opt/homebrew/lib/libglm.dylib /Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/usr/lib/libz.tbd || libglad.a
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk
   LINK_LIBRARIES = -Wl,-rpath,/opt/homebrew/lib  libglad.a  /Users/prkaaviya/CLionProjects/try8/Dependencies/lib/GL/libGLEW.dylib  /opt/homebrew/lib/libassimp.5.4.3.dylib  /opt/homebrew/lib/libglfw.3.4.dylib  /opt/homebrew/lib/libglm.dylib  -framework OpenGL  -framework Cocoa  -framework IOKit  -framework CoreVideo  /Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/usr/lib/libz.tbd
   OBJECT_DIR = CMakeFiles/try8.dir

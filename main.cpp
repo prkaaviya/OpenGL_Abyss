@@ -3,6 +3,7 @@
 #include <cmath>
 #include <vector>
 #include <fstream>
+#include <iterator>
 #include <sstream>
 
 #include <GL/glew.h>
@@ -13,6 +14,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "Mesh.h"
+#include "Light.h"
 #include "Camera.h"
 #include "Shader.h"
 #include "Texture.h"
@@ -28,14 +30,42 @@ Camera camera;
 Texture containerTexture;
 Texture metalBoxTexture;
 
+Light mainLight;
+
 GLfloat deltaTime = 0.0f;
 GLfloat lastTime = 0.0f;
 
 const std::string vShader = "/Users/prkaaviya/CLionProjects/try8/Shaders/default_vert.glsl";
 const std::string fShader = "/Users/prkaaviya/CLionProjects/try8/Shaders/default_frag.glsl";
 
+void calcAverageNormals(const unsigned int* indices, unsigned int indiceCount,
+                        GLfloat* vertices, const unsigned int verticeCount,
+						const unsigned int vLength, const unsigned int normalOffset) {
+	for (unsigned int i = 0; i < indiceCount; i += 3) {
+		unsigned int in0 = indices[i] * vLength;
+		unsigned int in1 = indices[i + 1] * vLength;
+		unsigned int in2 = indices[i + 2] * vLength;
+		glm::vec3 v1(vertices[in1] - vertices[in0], vertices[in1 + 1] - vertices[in0 + 1], vertices[in1 + 2] - vertices[in0 + 2]);
+		glm::vec3 v2(vertices[in2] - vertices[in0], vertices[in2 + 1] - vertices[in0 + 1], vertices[in2 + 2] - vertices[in0 + 2]);
+		glm::vec3 normal = glm::cross(v1, v2);
+		normal = glm::normalize(normal);
+
+		in0 += normalOffset; in1 += normalOffset; in2 += normalOffset;
+		vertices[in0] += normal.x; vertices[in0 + 1] += normal.y; vertices[in0 + 2] += normal.z;
+		vertices[in1] += normal.x; vertices[in1 + 1] += normal.y; vertices[in1 + 2] += normal.z;
+		vertices[in2] += normal.x; vertices[in2 + 1] += normal.y; vertices[in2 + 2] += normal.z;
+	}
+
+	for (size_t i = 0; i < verticeCount / vLength; i++) {
+		unsigned int nOffset = i * vLength + normalOffset;
+		glm::vec3 vec(vertices[nOffset], vertices[nOffset + 1], vertices[nOffset + 2]);
+		vec = glm::normalize(vec);
+		vertices[nOffset] += vec.x; vertices[nOffset + 1] += vec.y; vertices[nOffset + 2] += vec.z;
+	}
+}
+
 void CreateObjects() {
-	unsigned int indices[] = {
+	const unsigned int indices[] = {
 		// Front face
 		0, 1, 2,
 		2, 3, 0,
@@ -57,50 +87,52 @@ void CreateObjects() {
 	};
 
 	GLfloat vertices[] = {
-		// x      y      z      u     v
+		// x      y      z      u     v       nx    ny    nz
 		// Front face
-		-1.0f, -1.0f,  1.0f,   0.0f, 0.0f, // Bottom-left
-		 1.0f, -1.0f,  1.0f,   1.0f, 0.0f, // Bottom-right
-		 1.0f,  1.0f,  1.0f,   1.0f, 1.0f, // Top-right
-		-1.0f,  1.0f,  1.0f,   0.0f, 1.0f, // Top-left
+		-1.0f, -1.0f,  1.0f,   0.0f, 0.0f,   0.0f, 0.0f, 0.0f, // Bottom-left
+		 1.0f, -1.0f,  1.0f,   1.0f, 0.0f,   0.0f, 0.0f, 0.0f, // Bottom-right
+		 1.0f,  1.0f,  1.0f,   1.0f, 1.0f,   0.0f, 0.0f, 0.0f, // Top-right
+		-1.0f,  1.0f,  1.0f,   0.0f, 1.0f,   0.0f, 0.0f, 0.0f, // Top-left
 
 		// Back face
-		-1.0f, -1.0f, -1.0f,   1.0f, 0.0f, // Bottom-left
-		 1.0f, -1.0f, -1.0f,   0.0f, 0.0f, // Bottom-right
-		 1.0f,  1.0f, -1.0f,   0.0f, 1.0f, // Top-right
-		-1.0f,  1.0f, -1.0f,   1.0f, 1.0f, // Top-left
+		-1.0f, -1.0f, -1.0f,   1.0f, 0.0f,   0.0f, 0.0f, 0.0f, // Bottom-left
+		 1.0f, -1.0f, -1.0f,   0.0f, 0.0f,   0.0f, 0.0f, 0.0f, // Bottom-right
+		 1.0f,  1.0f, -1.0f,   0.0f, 1.0f,   0.0f, 0.0f, 0.0f, // Top-right
+		-1.0f,  1.0f, -1.0f,   1.0f, 1.0f,   0.0f, 0.0f, 0.0f, // Top-left
 
 		// Left face
-		-1.0f, -1.0f, -1.0f,   0.0f, 0.0f, // Bottom-left
-		-1.0f, -1.0f,  1.0f,   1.0f, 0.0f, // Bottom-right
-		-1.0f,  1.0f,  1.0f,   1.0f, 1.0f, // Top-right
-		-1.0f,  1.0f, -1.0f,   0.0f, 1.0f, // Top-left
+		-1.0f, -1.0f, -1.0f,   0.0f, 0.0f,   0.0f, 0.0f, 0.0f, // Bottom-left
+		-1.0f, -1.0f,  1.0f,   1.0f, 0.0f,   0.0f, 0.0f, 0.0f, // Bottom-right
+		-1.0f,  1.0f,  1.0f,   1.0f, 1.0f,   0.0f, 0.0f, 0.0f, // Top-right
+		-1.0f,  1.0f, -1.0f,   0.0f, 1.0f,   0.0f, 0.0f, 0.0f, // Top-left
 
 		// Right face
-		 1.0f, -1.0f, -1.0f,   0.0f, 0.0f, // Bottom-left
-		 1.0f, -1.0f,  1.0f,   1.0f, 0.0f, // Bottom-right
-		 1.0f,  1.0f,  1.0f,   1.0f, 1.0f, // Top-right
-		 1.0f,  1.0f, -1.0f,   0.0f, 1.0f, // Top-left
+		 1.0f, -1.0f, -1.0f,   0.0f, 0.0f,   0.0f, 0.0f, 0.0f,// Bottom-left
+		 1.0f, -1.0f,  1.0f,   1.0f, 0.0f,   0.0f, 0.0f, 0.0f,// Bottom-right
+		 1.0f,  1.0f,  1.0f,   1.0f, 1.0f,   0.0f, 0.0f, 0.0f,// Top-right
+		 1.0f,  1.0f, -1.0f,   0.0f, 1.0f,   0.0f, 0.0f, 0.0f,// Top-left
 
 		// Top face
-		-1.0f,  1.0f, -1.0f,   0.0f, 0.0f, // Bottom-left
-		 1.0f,  1.0f, -1.0f,   1.0f, 0.0f, // Bottom-right
-		 1.0f,  1.0f,  1.0f,   1.0f, 1.0f, // Top-right
-		-1.0f,  1.0f,  1.0f,   0.0f, 1.0f, // Top-left
+		-1.0f,  1.0f, -1.0f,   0.0f, 0.0f,   0.0f, 0.0f, 0.0f, // Bottom-left
+		 1.0f,  1.0f, -1.0f,   1.0f, 0.0f,   0.0f, 0.0f, 0.0f, // Bottom-right
+		 1.0f,  1.0f,  1.0f,   1.0f, 1.0f,   0.0f, 0.0f, 0.0f, // Top-right
+		-1.0f,  1.0f,  1.0f,   0.0f, 1.0f,   0.0f, 0.0f, 0.0f, // Top-left
 
 		// Bottom face
-		-1.0f, -1.0f, -1.0f,   0.0f, 0.0f, // Bottom-left
-		 1.0f, -1.0f, -1.0f,   1.0f, 0.0f, // Bottom-right
-		 1.0f, -1.0f,  1.0f,   1.0f, 1.0f, // Top-right
-		-1.0f, -1.0f,  1.0f,   0.0f, 1.0f, // Top-left
+		-1.0f, -1.0f, -1.0f,   0.0f, 0.0f,   0.0f, 0.0f, 0.0f, // Bottom-left
+		 1.0f, -1.0f, -1.0f,   1.0f, 0.0f,   0.0f, 0.0f, 0.0f, // Bottom-right
+		 1.0f, -1.0f,  1.0f,   1.0f, 1.0f,   0.0f, 0.0f, 0.0f, // Top-right
+		-1.0f, -1.0f,  1.0f,   0.0f, 1.0f,   0.0f, 0.0f, 0.0f, // Top-left
 	};
 
-    Mesh *obj1 = new Mesh();
-	obj1->CreateMesh(vertices, indices, 120, 36);
+	calcAverageNormals(indices, 36, vertices, 192, 8, 5);
+
+	const auto obj1 = new Mesh();
+	obj1->CreateMesh(vertices, indices, 192, 36);
 	meshList.push_back(obj1);
 
-	Mesh *obj2 = new Mesh();
-	obj2->CreateMesh(vertices, indices, 120, 36);
+	const auto obj2 = new Mesh();
+	obj2->CreateMesh(vertices, indices, 192, 36);
 	meshList.push_back(obj2);
 }
 
@@ -126,7 +158,12 @@ int main()
 	metalBoxTexture = Texture("/Users/prkaaviya/CLionProjects/try8/Resources/Textures/metalbox.jpg");
 	metalBoxTexture.LoadTextureA();
 
-	GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0;
+	mainLight = Light(1.0f, 1.0f, 1.0f, 0.2f,
+					2.0f, -1.0f, -2.0f, 1.0f);
+
+	GLfloat uniformProjection = 0, uniformModel = 0, uniformView = 0,
+			uniformAmbientIntensity = 0, uniformAmbientColor = 0,
+			uniformDirection = 0, uniformDiffuseIntensity = 0;
 	glm::mat4 projection = glm::perspective(glm::radians(45.0f), static_cast<GLfloat>(mainWindow.getBufferWidth()) / mainWindow.getBufferHeight(), 0.1f, 100.0f);
     
     while (!mainWindow.getShouldClose())
@@ -147,6 +184,13 @@ int main()
 		uniformModel = shaderList[0].GetModelLocation();
 		uniformProjection = shaderList[0].GetProjectionLocation();
 		uniformView = shaderList[0].GetViewLocation();
+    	uniformAmbientColor = shaderList[0].GetAmbientColourLocation();
+    	uniformAmbientIntensity = shaderList[0].GetAmbientIntensityLocation();
+    	uniformDirection = shaderList[0].GetDirectionLocation();
+    	uniformDiffuseIntensity = shaderList[0].GetDiffuseIntensityLocation();
+
+    	mainLight.UseLight(uniformAmbientIntensity, uniformAmbientColor,
+    						uniformDiffuseIntensity, uniformDirection);
 
 		glm::mat4 model(1.0f);	
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -2.5f));
