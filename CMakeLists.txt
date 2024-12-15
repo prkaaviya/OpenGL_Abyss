@@ -11,7 +11,7 @@ include_directories(${PROJECT_SOURCE_DIR}/Dependencies/include/assimp)
 
 find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
-find_package(glew REQUIRED)
+find_package(GLEW REQUIRED)
 find_package(glm CONFIG REQUIRED)
 find_package(assimp REQUIRED)
 
@@ -25,6 +25,8 @@ add_executable(try8 main.cpp
         stb_image.h
         Camera.cpp
         Camera.h
+        Texture.cpp
+        Texture.h
 )
 
 target_link_libraries(try8 PRIVATE glad)
