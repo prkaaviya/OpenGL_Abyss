@@ -68,8 +68,8 @@ int Window::Initialise()
 	}
 
 	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_BLEND);
-	glCullFace(GL_FRONT);
+	// glEnable(GL_BLEND);
+	// glCullFace(GL_FRONT);
 
 	glViewport(0, 0, bufferWidth, bufferHeight);
 

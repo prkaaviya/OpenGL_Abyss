@@ -16,6 +16,6 @@
 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
 -- Found Threads: TRUE
 -- Found GLEW: /opt/homebrew/lib/cmake/glew/glew-config.cmake
--- Configuring done (0.6s)
+-- Configuring done (0.7s)
 -- Generating done (0.0s)
 -- Build files have been written to: /Users/prkaaviya/CLionProjects/try8/cmake-build-debug

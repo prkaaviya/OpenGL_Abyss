@@ -12,14 +12,19 @@
 
 #include "Mesh.h"
 #include "Texture.h"
+#include "OBJLoader.h"
 
 class Model {
 public:
     Model();
 
     void LoadModel(const std::string & fileName);
-    void RenderModel();
+    void RenderModel() const;
     void ClearModel();
+
+    void LoadModelWithoutAssimp(const std::string & fileName);
+    void RenderModelWithoutAssimp() const;
+    void ClearModelWithoutAssimp();
 
     ~Model();
 
@@ -28,9 +33,12 @@ private:
     void LoadMesh(aiMesh *mesh, const aiScene *scene);
     void LoadMaterials(const aiScene *scene);
 
+    void SetAttributeSizeAssimp(const aiScene *scene);
+
     std::vector<Mesh*> meshList;
     std::vector<Texture*> textureList;
     std::vector<unsigned int> meshToTex;
+    std::vector<int> attributeSizes;
 };
 
 #endif //MODEL_H

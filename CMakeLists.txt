@@ -40,6 +40,8 @@ add_executable(try8 main.cpp
         Texture.h
         Window.cpp
         Window.h
+        OBJLoader.cpp
+        OBJLoader.h
 )
 
 target_link_libraries(try8 PRIVATE glad)

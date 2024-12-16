@@ -7,7 +7,13 @@ Mesh::Mesh() {
     indexCount = 0;
 }
 
-void Mesh::CreateMesh(const GLfloat *vertices, const unsigned int *indices, const unsigned int numOfVertices, const unsigned int numOfIndices) {
+void Mesh::CreateMesh(const GLfloat *vertices, const unsigned int *indices, const unsigned int numOfVertices, const unsigned int numOfIndices, const std::vector<int> &attributeSizes) {
+    printf("[DEBUG] In CreateMesh with attributeSizes:\n");
+    for (const auto &size : attributeSizes) {
+        printf("%d ", size);
+    }
+    printf("\n");
+
     indexCount = numOfIndices;
 
     glGenVertexArrays(1, &VAO);
@@ -21,17 +27,29 @@ void Mesh::CreateMesh(const GLfloat *vertices, const unsigned int *indices, cons
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices[0]) * numOfVertices, vertices, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertices[0]) * 8, static_cast<void *>(nullptr));
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(vertices[0]) * 8, reinterpret_cast<void *>(sizeof(vertices[0]) * 3));
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(vertices[0]) * 8, reinterpret_cast<void *>(sizeof(vertices[0]) * 5));
-    glEnableVertexAttribArray(2);
+    int stride = 0;
+    for (const auto &size : attributeSizes) {
+        stride += size;
+    }
+    stride *= sizeof(GLfloat);
+    printf("[DEBUG] Final value of stride: %d\n", stride);
+
+    intptr_t offset = 0;
+    for (int i = 0; i < attributeSizes.size(); i++) {
+        printf("[DEBUG] Value of offset for attribute loc %d: %ld\n", i, offset);
+        glVertexAttribPointer(i, attributeSizes[i], GL_FLOAT, GL_FALSE, stride, reinterpret_cast<void *>(offset));
+        glEnableVertexAttribArray(i);
+        offset += attributeSizes[i] * sizeof(GLfloat);
+    }
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
     glBindVertexArray(0);
+
+    if (const GLenum err = glGetError(); err != GL_NO_ERROR) {
+        printf("OpenGL Error (after CreateMesh): %d\n", err);
+    }
 }
 
 void Mesh::RenderMesh() const {

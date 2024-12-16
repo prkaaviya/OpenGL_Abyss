@@ -34,6 +34,7 @@ Camera camera;
 Texture containerTexture;
 Texture metalBoxTexture;
 Texture plainTexture;
+Texture waterTexture;
 
 Material shinyMaterial;
 Material dullMaterial;
@@ -44,7 +45,7 @@ Model blackhawk;
 Model coralPillar;
 Model hut;
 
-Model box;
+Model angelFish;
 
 DirectionalLight mainLight;
 PointLight pointLights[MAX_POINT_LIGHTS];
@@ -55,9 +56,6 @@ GLfloat lastTime = 0.0f;
 
 const std::string vShader = "/Users/prkaaviya/CLionProjects/try8/Shaders/default_vert.glsl";
 const std::string fShader = "/Users/prkaaviya/CLionProjects/try8/Shaders/default_frag.glsl";
-
-const std::string boxVShader = "/Users/prkaaviya/CLionProjects/try8/Shaders/box_vert.glsl";
-const std::string boxFShader = "/Users/prkaaviya/CLionProjects/try8/Shaders/box_frag.glsl";
 
 void calcAverageNormals(const unsigned int* indices, unsigned int indiceCount,
                         GLfloat* vertices, const unsigned int verticeCount,
@@ -160,16 +158,18 @@ void CreateObjects() {
 
 	calcAverageNormals(indices, 36, vertices, 192, 8, 5);
 
+	const std::vector<int> &boxAttributeSizes = {3, 2, 3};
+
 	const auto obj1 = new Mesh();
-	obj1->CreateMesh(vertices, indices, 192, 36);
+	obj1->CreateMesh(vertices, indices, 192, 36, boxAttributeSizes);
 	meshList.push_back(obj1);
 
 	const auto obj2 = new Mesh();
-	obj2->CreateMesh(vertices, indices, 192, 36);
+	obj2->CreateMesh(vertices, indices, 192, 36, boxAttributeSizes);
 	meshList.push_back(obj2);
 
 	const auto obj3 = new Mesh();
-	obj3->CreateMesh(floorVertices, floorIndices, 32, 6);
+	obj3->CreateMesh(floorVertices, floorIndices, 32, 6, boxAttributeSizes);
 	meshList.push_back(obj3);
 }
 
@@ -178,10 +178,6 @@ void CreateShaders()
 	auto *shader1 = new Shader();
 	shader1->CreateFromFiles(vShader.c_str(), fShader.c_str());
 	shaderList.push_back(*shader1);
-
-	// auto *shader2 = new Shader();
-	// shader2->CreateFromFiles(boxVShader.c_str(), boxFShader.c_str());
-	// shaderList.push_back(*shader2);
 }
 
 int main()
@@ -200,6 +196,8 @@ int main()
 	metalBoxTexture.LoadTextureA();
 	plainTexture = Texture("/Users/prkaaviya/CLionProjects/try8/Textures/rock.jpg");
 	plainTexture.LoadTextureA();
+	waterTexture = Texture("/Users/prkaaviya/CLionProjects/try8/Textures/water.jpg");
+	waterTexture.LoadTextureA();
 
 	shinyMaterial = Material(4.0f, 256);
 	dullMaterial = Material(0.3f, 4);
@@ -214,15 +212,15 @@ int main()
 	//
 	coralPillar = Model();
 	printf("[DEBUG] Loading coral pillar model.\n");
-	coralPillar.LoadModel("/Users/prkaaviya/CLionProjects/try8/Models/coral_pillar.obj");
+	coralPillar.LoadModelWithoutAssimp("/Users/prkaaviya/CLionProjects/try8/Models/coral_pillar.obj");
 
 	hut = Model();
 	printf("[DEBUG] Loading hut model.\n");
-	hut.LoadModel("/Users/prkaaviya/CLionProjects/try8/Models/medieval_house.obj");
+	hut.LoadModelWithoutAssimp("/Users/prkaaviya/CLionProjects/try8/Models/medieval_house.obj");
 	//
-	// box = Model();
-	// printf("[DEBUG] Loading box model.\n");
-	// box.LoadModel("/Users/prkaaviya/CLionProjects/try8/Models/box/box.obj");
+	angelFish = Model();
+	printf("[DEBUG] Loading angelFish model.\n");
+	angelFish.LoadModelWithoutAssimp("/Users/prkaaviya/CLionProjects/try8/Models/angelfish/13009_Coral_Beauty_Angelfish_v1_l3.obj");
 
 	mainLight = DirectionalLight(1.0f, 1.0f, 1.0f, 
 								0.1f, 0.5f,
@@ -333,18 +331,27 @@ int main()
 		// shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		// blackhawk.RenderModel();
 
-    	model = glm::mat4(1.0f);
-    	model = glm::translate(model, glm::vec3(-3.0f, 0.4f, -2.5f));
-    	// model = glm::rotate(model, 0.0f, glm::vec3(1.0f, 0.0f, 0.0f));
-    	model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
-    	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-    	coralPillar.RenderModel();
 
     	model = glm::mat4(1.0f);
     	model = glm::translate(model, glm::vec3(-6.0f, 0.4f, -2.5f));
-    	model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+    	model = glm::rotate(model, -90.0f * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+    	model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
     	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-    	hut.RenderModel();
+    	waterTexture.UseTexture();
+    	shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
+    	coralPillar.RenderModelWithoutAssimp();
+
+    	model = glm::mat4(1.0f);
+    	model = glm::translate(model, glm::vec3(-12.0f, 0.4f, -2.5f));
+    	model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+    	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+    	hut.RenderModelWithoutAssimp();
+
+    	model = glm::mat4(1.0f);
+    	model = glm::translate(model, glm::vec3(8.0f, 0.4f, -2.5f));
+    	// model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+    	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+    	angelFish.RenderModelWithoutAssimp();
 
 		glUseProgram(0);
 

@@ -1,14 +1,63 @@
 #include "Model.h"
 
-Model::Model() {
+Model::Model(): attributeSizes({}) {
 
 }
 
-void Model::RenderModel() {
-    for (size_t i = 0; i < meshList.size(); i++) {
-        unsigned int materialIndex = meshToTex[i];
+void Model::LoadModelWithoutAssimp(const std::string &fileName) {
+    std::vector<Vertex> vertices;
+    std::vector<unsigned int> indices;
 
-        if (materialIndex < textureList.size() && textureList[materialIndex]) {
+    // Use OBJLoader to parse the OBJ file
+    if (OBJLoader::LoadOBJ(fileName, vertices, indices)) {
+        // Attribute sizes: Position(3), Texture Coordinates(2), Normals(3)
+        attributeSizes = {3, 2, 3};
+
+        // Convert Vertex vector to GLfloat array
+        std::vector<GLfloat> vertexData;
+        for (const auto &v : vertices) {
+            vertexData.push_back(v.position.x);
+            vertexData.push_back(v.position.y);
+            vertexData.push_back(v.position.z);
+            vertexData.push_back(v.texCoords.x);
+            vertexData.push_back(v.texCoords.y);
+            vertexData.push_back(v.normal.x);
+            vertexData.push_back(v.normal.y);
+            vertexData.push_back(v.normal.z);
+        }
+
+        // Create a new mesh using the loaded vertices and indices
+        auto *newMesh = new Mesh();
+        newMesh->CreateMesh(vertexData.data(), indices.data(),
+                            static_cast<unsigned int>(vertexData.size()),
+                            static_cast<unsigned int>(indices.size()),
+                            attributeSizes);
+
+        meshList.push_back(newMesh);
+        printf("[DEBUG] Model loaded: %s\n", fileName.c_str());
+    } else {
+        printf("Failed to load OBJ file: %s\n", fileName.c_str());
+    }
+}
+
+void Model::RenderModelWithoutAssimp() const {
+    for (const auto &mesh : meshList) {
+        mesh->RenderMesh();
+    }
+}
+
+void Model::ClearModelWithoutAssimp() {
+    for (auto &mesh : meshList) {
+        mesh->ClearMesh();
+        delete mesh;
+        mesh = nullptr;
+    }
+    meshList.clear();
+}
+
+void Model::RenderModel() const {
+    for (size_t i = 0; i < meshList.size(); i++) {
+        if (const unsigned int materialIndex = meshToTex[i]; materialIndex < textureList.size() && textureList[materialIndex]) {
             textureList[materialIndex]->UseTexture();
         }
 
@@ -16,19 +65,10 @@ void Model::RenderModel() {
     }
 }
 
-void Model::LoadModel(const std::string &fileName) {
-    Assimp::Importer importer;
-    const aiScene *scene = importer.ReadFile(fileName, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_GenSmoothNormals | aiProcess_JoinIdenticalVertices);
-
-    if (!scene) {
-        printf("ERROR: Failed to load model from %s: %s\n", fileName.c_str(), importer.GetErrorString());
-        return;
-    }
-
+void Model::SetAttributeSizeAssimp(const aiScene *scene) {
     for (unsigned int i = 0; i < scene->mNumMeshes; ++i) {
-        aiMesh* mesh = scene->mMeshes[i];
-
-        std::vector<int> attributeSizes;
+        const aiMesh* mesh = scene->mMeshes[i];
+        attributeSizes.clear();
 
         // Check for Positions
         if (mesh->HasPositions()) {
@@ -59,6 +99,18 @@ void Model::LoadModel(const std::string &fileName) {
             printf("%d\n", size);
         }
     }
+}
+
+void Model::LoadModel(const std::string &fileName) {
+    Assimp::Importer importer;
+    const aiScene *scene = importer.ReadFile(fileName, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_GenSmoothNormals | aiProcess_JoinIdenticalVertices);
+
+    if (!scene) {
+        printf("ERROR: Failed to load model from %s: %s\n", fileName.c_str(), importer.GetErrorString());
+        return;
+    }
+
+    SetAttributeSizeAssimp(scene);
 
     LoadNode(scene->mRootNode, scene);
 
@@ -97,7 +149,7 @@ void Model::LoadMesh(aiMesh *mesh, const aiScene *scene) {
     }
 
     const auto newMesh = new Mesh();
-    newMesh->CreateMesh(&vertices[0], &indices[0], vertices.size(), indices.size());
+    newMesh->CreateMesh(&vertices[0], &indices[0], vertices.size(), indices.size(), attributeSizes);
     meshList.push_back(newMesh);
     meshToTex.push_back(mesh->mMaterialIndex);
 }
