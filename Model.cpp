@@ -25,6 +25,41 @@ void Model::LoadModel(const std::string &fileName) {
         return;
     }
 
+    for (unsigned int i = 0; i < scene->mNumMeshes; ++i) {
+        aiMesh* mesh = scene->mMeshes[i];
+
+        std::vector<int> attributeSizes;
+
+        // Check for Positions
+        if (mesh->HasPositions()) {
+            attributeSizes.push_back(3); // x, y, z
+            printf("Positions: 3 components\n");
+        }
+
+        // Check for Texture Coordinates
+        if (mesh->HasTextureCoords(0)) {
+            attributeSizes.push_back(2); // u, v
+            printf("Texture Coordinates: 2 components\n");
+        }
+
+        // Check for Normals
+        if (mesh->HasNormals()) {
+            attributeSizes.push_back(3); // nx, ny, nz
+            printf("Normals: 3 components\n");
+        }
+
+        // Check for Tangents
+        if (mesh->HasTangentsAndBitangents()) {
+            attributeSizes.push_back(3); // Tangents (optional)
+            printf("Tangents: 3 components\n");
+        }
+
+        printf("Attribute Sizes for Mesh %d :\n", i);
+        for (const int size : attributeSizes) {
+            printf("%d\n", size);
+        }
+    }
+
     LoadNode(scene->mRootNode, scene);
 
     LoadMaterials(scene);
@@ -81,16 +116,23 @@ void Model::LoadMaterials(const aiScene *scene) {
             aiString path;
             if (material->GetTexture(aiTextureType_DIFFUSE, 0, &path) == AI_SUCCESS) {
                 printf("[DEBUG] for path: %s\n", path.data);
-                const int idx = std::string(path.data).rfind('/');
-                printf("[DEBUG] for idx: %s\n", std::string(path.data).substr(0, idx).c_str());
-                std::string filename = std::string(path.data).substr(idx + 1);
+                std::string fullPath = path.data;
+                size_t lastSlash = fullPath.find_last_of("/\\"); // Handles both '/' and '\\'
+
+                std::string filename;
+                if (lastSlash != std::string::npos) {
+                    filename = fullPath.substr(lastSlash + 1); // Extract from after the last slash
+                } else {
+                    filename = fullPath; // If no slashes are found, use the full path
+                }
                 printf("[DEBUG] for filename: %s\n", filename.c_str());
+
                 std::string texPath = std::string("/Users/prkaaviya/CLionProjects/try8/Textures/") + filename;
                 printf("Loading texture: %s\n", texPath.c_str());
 
                 textureList[i] = new Texture(texPath.c_str());
 
-                if (!textureList[i]->LoadTexture()) {
+                if (!textureList[i]->LoadTextureA()) {
                     printf("ERROR: Failed to load texture from %s: %s\n", filename.c_str(), texPath.c_str());
                     delete textureList[i];
                     textureList[i] = nullptr;

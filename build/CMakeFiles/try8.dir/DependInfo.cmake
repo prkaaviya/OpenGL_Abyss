@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/prkaaviya/CLionProjects/try8/Light.cpp" "CMakeFiles/try8.dir/Light.cpp.o" "gcc" "CMakeFiles/try8.dir/Light.cpp.o.d"
   "/Users/prkaaviya/CLionProjects/try8/Material.cpp" "CMakeFiles/try8.dir/Material.cpp.o" "gcc" "CMakeFiles/try8.dir/Material.cpp.o.d"
   "/Users/prkaaviya/CLionProjects/try8/Mesh.cpp" "CMakeFiles/try8.dir/Mesh.cpp.o" "gcc" "CMakeFiles/try8.dir/Mesh.cpp.o.d"
+  "/Users/prkaaviya/CLionProjects/try8/Model.cpp" "CMakeFiles/try8.dir/Model.cpp.o" "gcc" "CMakeFiles/try8.dir/Model.cpp.o.d"
   "/Users/prkaaviya/CLionProjects/try8/PointLight.cpp" "CMakeFiles/try8.dir/PointLight.cpp.o" "gcc" "CMakeFiles/try8.dir/PointLight.cpp.o.d"
   "/Users/prkaaviya/CLionProjects/try8/Shader.cpp" "CMakeFiles/try8.dir/Shader.cpp.o" "gcc" "CMakeFiles/try8.dir/Shader.cpp.o.d"
   "/Users/prkaaviya/CLionProjects/try8/SpotLight.cpp" "CMakeFiles/try8.dir/SpotLight.cpp.o" "gcc" "CMakeFiles/try8.dir/SpotLight.cpp.o.d"

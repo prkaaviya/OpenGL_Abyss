@@ -8,7 +8,7 @@ Texture::Texture() {
     fileLocation = "";
 }
 
-Texture::Texture(char *fileLoc) {
+Texture::Texture(const char *fileLoc) {
     textureID = 0;
     width = 0;
     height = 0;
@@ -68,7 +68,7 @@ bool Texture::LoadTextureA() {
     return true;
 }
 
-void Texture::UseTexture() {
+void Texture::UseTexture() const {
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, textureID);
 }

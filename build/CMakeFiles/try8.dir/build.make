@@ -156,10 +156,24 @@ CMakeFiles/try8.dir/Mesh.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/try8.dir/Mesh.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/prkaaviya/CLionProjects/try8/Mesh.cpp -o CMakeFiles/try8.dir/Mesh.cpp.s
 
+CMakeFiles/try8.dir/Model.cpp.o: CMakeFiles/try8.dir/flags.make
+CMakeFiles/try8.dir/Model.cpp.o: /Users/prkaaviya/CLionProjects/try8/Model.cpp
+CMakeFiles/try8.dir/Model.cpp.o: CMakeFiles/try8.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/prkaaviya/CLionProjects/try8/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/try8.dir/Model.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/try8.dir/Model.cpp.o -MF CMakeFiles/try8.dir/Model.cpp.o.d -o CMakeFiles/try8.dir/Model.cpp.o -c /Users/prkaaviya/CLionProjects/try8/Model.cpp
+
+CMakeFiles/try8.dir/Model.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/try8.dir/Model.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/prkaaviya/CLionProjects/try8/Model.cpp > CMakeFiles/try8.dir/Model.cpp.i
+
+CMakeFiles/try8.dir/Model.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/try8.dir/Model.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/prkaaviya/CLionProjects/try8/Model.cpp -o CMakeFiles/try8.dir/Model.cpp.s
+
 CMakeFiles/try8.dir/PointLight.cpp.o: CMakeFiles/try8.dir/flags.make
 CMakeFiles/try8.dir/PointLight.cpp.o: /Users/prkaaviya/CLionProjects/try8/PointLight.cpp
 CMakeFiles/try8.dir/PointLight.cpp.o: CMakeFiles/try8.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/prkaaviya/CLionProjects/try8/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/try8.dir/PointLight.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/prkaaviya/CLionProjects/try8/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/try8.dir/PointLight.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/try8.dir/PointLight.cpp.o -MF CMakeFiles/try8.dir/PointLight.cpp.o.d -o CMakeFiles/try8.dir/PointLight.cpp.o -c /Users/prkaaviya/CLionProjects/try8/PointLight.cpp
 
 CMakeFiles/try8.dir/PointLight.cpp.i: cmake_force
@@ -173,7 +187,7 @@ CMakeFiles/try8.dir/PointLight.cpp.s: cmake_force
 CMakeFiles/try8.dir/Shader.cpp.o: CMakeFiles/try8.dir/flags.make
 CMakeFiles/try8.dir/Shader.cpp.o: /Users/prkaaviya/CLionProjects/try8/Shader.cpp
 CMakeFiles/try8.dir/Shader.cpp.o: CMakeFiles/try8.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/prkaaviya/CLionProjects/try8/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/try8.dir/Shader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/prkaaviya/CLionProjects/try8/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/try8.dir/Shader.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/try8.dir/Shader.cpp.o -MF CMakeFiles/try8.dir/Shader.cpp.o.d -o CMakeFiles/try8.dir/Shader.cpp.o -c /Users/prkaaviya/CLionProjects/try8/Shader.cpp
 
 CMakeFiles/try8.dir/Shader.cpp.i: cmake_force
@@ -187,7 +201,7 @@ CMakeFiles/try8.dir/Shader.cpp.s: cmake_force
 CMakeFiles/try8.dir/SpotLight.cpp.o: CMakeFiles/try8.dir/flags.make
 CMakeFiles/try8.dir/SpotLight.cpp.o: /Users/prkaaviya/CLionProjects/try8/SpotLight.cpp
 CMakeFiles/try8.dir/SpotLight.cpp.o: CMakeFiles/try8.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/prkaaviya/CLionProjects/try8/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/try8.dir/SpotLight.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/prkaaviya/CLionProjects/try8/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/try8.dir/SpotLight.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/try8.dir/SpotLight.cpp.o -MF CMakeFiles/try8.dir/SpotLight.cpp.o.d -o CMakeFiles/try8.dir/SpotLight.cpp.o -c /Users/prkaaviya/CLionProjects/try8/SpotLight.cpp
 
 CMakeFiles/try8.dir/SpotLight.cpp.i: cmake_force
@@ -201,7 +215,7 @@ CMakeFiles/try8.dir/SpotLight.cpp.s: cmake_force
 CMakeFiles/try8.dir/Texture.cpp.o: CMakeFiles/try8.dir/flags.make
 CMakeFiles/try8.dir/Texture.cpp.o: /Users/prkaaviya/CLionProjects/try8/Texture.cpp
 CMakeFiles/try8.dir/Texture.cpp.o: CMakeFiles/try8.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/prkaaviya/CLionProjects/try8/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/try8.dir/Texture.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/prkaaviya/CLionProjects/try8/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/try8.dir/Texture.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/try8.dir/Texture.cpp.o -MF CMakeFiles/try8.dir/Texture.cpp.o.d -o CMakeFiles/try8.dir/Texture.cpp.o -c /Users/prkaaviya/CLionProjects/try8/Texture.cpp
 
 CMakeFiles/try8.dir/Texture.cpp.i: cmake_force
@@ -215,7 +229,7 @@ CMakeFiles/try8.dir/Texture.cpp.s: cmake_force
 CMakeFiles/try8.dir/Window.cpp.o: CMakeFiles/try8.dir/flags.make
 CMakeFiles/try8.dir/Window.cpp.o: /Users/prkaaviya/CLionProjects/try8/Window.cpp
 CMakeFiles/try8.dir/Window.cpp.o: CMakeFiles/try8.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/prkaaviya/CLionProjects/try8/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/try8.dir/Window.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/prkaaviya/CLionProjects/try8/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/try8.dir/Window.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/try8.dir/Window.cpp.o -MF CMakeFiles/try8.dir/Window.cpp.o.d -o CMakeFiles/try8.dir/Window.cpp.o -c /Users/prkaaviya/CLionProjects/try8/Window.cpp
 
 CMakeFiles/try8.dir/Window.cpp.i: cmake_force
@@ -234,6 +248,7 @@ try8_OBJECTS = \
 "CMakeFiles/try8.dir/Light.cpp.o" \
 "CMakeFiles/try8.dir/Material.cpp.o" \
 "CMakeFiles/try8.dir/Mesh.cpp.o" \
+"CMakeFiles/try8.dir/Model.cpp.o" \
 "CMakeFiles/try8.dir/PointLight.cpp.o" \
 "CMakeFiles/try8.dir/Shader.cpp.o" \
 "CMakeFiles/try8.dir/SpotLight.cpp.o" \
@@ -249,6 +264,7 @@ try8: CMakeFiles/try8.dir/DirectionalLight.cpp.o
 try8: CMakeFiles/try8.dir/Light.cpp.o
 try8: CMakeFiles/try8.dir/Material.cpp.o
 try8: CMakeFiles/try8.dir/Mesh.cpp.o
+try8: CMakeFiles/try8.dir/Model.cpp.o
 try8: CMakeFiles/try8.dir/PointLight.cpp.o
 try8: CMakeFiles/try8.dir/Shader.cpp.o
 try8: CMakeFiles/try8.dir/SpotLight.cpp.o
@@ -262,7 +278,7 @@ try8: /opt/homebrew/lib/libglfw.3.4.dylib
 try8: /opt/homebrew/lib/libglm.dylib
 try8: /Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/usr/lib/libz.tbd
 try8: CMakeFiles/try8.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/prkaaviya/CLionProjects/try8/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable try8"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/prkaaviya/CLionProjects/try8/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable try8"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/try8.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

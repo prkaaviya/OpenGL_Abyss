@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/try8.dir/Material.cpp.o.d"
   "CMakeFiles/try8.dir/Mesh.cpp.o"
   "CMakeFiles/try8.dir/Mesh.cpp.o.d"
+  "CMakeFiles/try8.dir/Model.cpp.o"
+  "CMakeFiles/try8.dir/Model.cpp.o.d"
   "CMakeFiles/try8.dir/PointLight.cpp.o"
   "CMakeFiles/try8.dir/PointLight.cpp.o.d"
   "CMakeFiles/try8.dir/Shader.cpp.o"

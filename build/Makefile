@@ -286,6 +286,30 @@ Mesh.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Mesh.cpp.s
 .PHONY : Mesh.cpp.s
 
+Model.o: Model.cpp.o
+.PHONY : Model.o
+
+# target to build an object file
+Model.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Model.cpp.o
+.PHONY : Model.cpp.o
+
+Model.i: Model.cpp.i
+.PHONY : Model.i
+
+# target to preprocess a source file
+Model.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Model.cpp.i
+.PHONY : Model.cpp.i
+
+Model.s: Model.cpp.s
+.PHONY : Model.s
+
+# target to generate assembly for a file
+Model.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Model.cpp.s
+.PHONY : Model.cpp.s
+
 PointLight.o: PointLight.cpp.o
 .PHONY : PointLight.o
 
@@ -458,6 +482,9 @@ help:
 	@echo "... Mesh.o"
 	@echo "... Mesh.i"
 	@echo "... Mesh.s"
+	@echo "... Model.o"
+	@echo "... Model.i"
+	@echo "... Model.s"
 	@echo "... PointLight.o"
 	@echo "... PointLight.i"
 	@echo "... PointLight.s"

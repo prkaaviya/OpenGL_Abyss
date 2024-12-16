@@ -27,6 +27,8 @@ add_executable(try8 main.cpp
         Material.h
         Mesh.cpp
         Mesh.h
+        Model.cpp
+        Model.h
         PointLight.cpp
         PointLight.h
         Shader.cpp
