@@ -152,6 +152,10 @@ void Shader::CompileShader(const char* vertexCode, const char* fragmentCode)
 	}
 }
 
+GLuint Shader::GetShaderID() const {
+	return shaderID;
+}
+
 GLuint Shader::GetProjectionLocation() const
 {
 	return uniformProjection;

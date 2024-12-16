@@ -21,6 +21,8 @@ add_executable(try8 main.cpp
         CommonValues.h
         DirectionalLight.cpp
         DirectionalLight.h
+        FishMovement.cpp
+        FishMovement.h
         Light.cpp
         Light.h
         Material.cpp
@@ -33,6 +35,8 @@ add_executable(try8 main.cpp
         PointLight.h
         Shader.cpp
         Shader.h
+        Skybox.cpp
+        Skybox.h
         SpotLight.cpp
         SpotLight.h
         stb_image.h
@@ -42,6 +46,8 @@ add_executable(try8 main.cpp
         Window.h
         OBJLoader.cpp
         OBJLoader.h
+        StarfishMovement.h
+        CoralAnimator.h
 )
 
 target_link_libraries(try8 PRIVATE glad)

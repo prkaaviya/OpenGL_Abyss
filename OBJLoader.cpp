@@ -30,7 +30,6 @@ bool OBJLoader::LoadOBJ(const std::string& filePath, std::vector<Vertex>& outVer
         else if (prefix == "vt") { // Texture coordinate
             glm::vec2 tex;
             s >> tex.x >> tex.y;
-            printf("[DEBUG] Loading texture coordinates: %f, %f\n", tex.x, tex.y);
             texCoords.push_back(tex);
         }
         else if (prefix == "vn") { // Normal

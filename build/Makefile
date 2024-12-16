@@ -310,6 +310,30 @@ Model.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Model.cpp.s
 .PHONY : Model.cpp.s
 
+OBJLoader.o: OBJLoader.cpp.o
+.PHONY : OBJLoader.o
+
+# target to build an object file
+OBJLoader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/OBJLoader.cpp.o
+.PHONY : OBJLoader.cpp.o
+
+OBJLoader.i: OBJLoader.cpp.i
+.PHONY : OBJLoader.i
+
+# target to preprocess a source file
+OBJLoader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/OBJLoader.cpp.i
+.PHONY : OBJLoader.cpp.i
+
+OBJLoader.s: OBJLoader.cpp.s
+.PHONY : OBJLoader.s
+
+# target to generate assembly for a file
+OBJLoader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/OBJLoader.cpp.s
+.PHONY : OBJLoader.cpp.s
+
 PointLight.o: PointLight.cpp.o
 .PHONY : PointLight.o
 
@@ -357,6 +381,30 @@ Shader.s: Shader.cpp.s
 Shader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Shader.cpp.s
 .PHONY : Shader.cpp.s
+
+Skybox.o: Skybox.cpp.o
+.PHONY : Skybox.o
+
+# target to build an object file
+Skybox.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Skybox.cpp.o
+.PHONY : Skybox.cpp.o
+
+Skybox.i: Skybox.cpp.i
+.PHONY : Skybox.i
+
+# target to preprocess a source file
+Skybox.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Skybox.cpp.i
+.PHONY : Skybox.cpp.i
+
+Skybox.s: Skybox.cpp.s
+.PHONY : Skybox.s
+
+# target to generate assembly for a file
+Skybox.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/try8.dir/build.make CMakeFiles/try8.dir/Skybox.cpp.s
+.PHONY : Skybox.cpp.s
 
 SpotLight.o: SpotLight.cpp.o
 .PHONY : SpotLight.o
@@ -485,12 +533,18 @@ help:
 	@echo "... Model.o"
 	@echo "... Model.i"
 	@echo "... Model.s"
+	@echo "... OBJLoader.o"
+	@echo "... OBJLoader.i"
+	@echo "... OBJLoader.s"
 	@echo "... PointLight.o"
 	@echo "... PointLight.i"
 	@echo "... PointLight.s"
 	@echo "... Shader.o"
 	@echo "... Shader.i"
 	@echo "... Shader.s"
+	@echo "... Skybox.o"
+	@echo "... Skybox.i"
+	@echo "... Skybox.s"
 	@echo "... SpotLight.o"
 	@echo "... SpotLight.i"
 	@echo "... SpotLight.s"

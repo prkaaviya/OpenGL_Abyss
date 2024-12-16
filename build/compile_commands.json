@@ -76,5 +76,17 @@
   "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/try8.dir/Window.cpp.o -c /Users/prkaaviya/CLionProjects/try8/Window.cpp",
   "file": "/Users/prkaaviya/CLionProjects/try8/Window.cpp",
   "output": "CMakeFiles/try8.dir/Window.cpp.o"
+},
+{
+  "directory": "/Users/prkaaviya/CLionProjects/try8/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/try8.dir/OBJLoader.cpp.o -c /Users/prkaaviya/CLionProjects/try8/OBJLoader.cpp",
+  "file": "/Users/prkaaviya/CLionProjects/try8/OBJLoader.cpp",
+  "output": "CMakeFiles/try8.dir/OBJLoader.cpp.o"
+},
+{
+  "directory": "/Users/prkaaviya/CLionProjects/try8/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glad/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/gl -I/Users/prkaaviya/CLionProjects/try8/Dependencies/glm/include -I/Users/prkaaviya/CLionProjects/try8/Dependencies/include/assimp -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -o CMakeFiles/try8.dir/Skybox.cpp.o -c /Users/prkaaviya/CLionProjects/try8/Skybox.cpp",
+  "file": "/Users/prkaaviya/CLionProjects/try8/Skybox.cpp",
+  "output": "CMakeFiles/try8.dir/Skybox.cpp.o"
 }
 ]
