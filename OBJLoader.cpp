@@ -69,7 +69,6 @@ bool OBJLoader::LoadOBJ(const std::string& filePath, std::vector<Vertex>& outVer
     return true;
 }
 
-
 std::unordered_map<std::string, MaterialMTL> OBJLoader::LoadMTL(const std::string& mtlFilePath) {
     std::unordered_map<std::string, MaterialMTL> materials;
     std::ifstream file(mtlFilePath);
