@@ -199,7 +199,7 @@ void CreateShaders()
 
 int main()
 {
-    mainWindow = Window(1366, 768);
+    mainWindow = Window(1800, 1200);
 	mainWindow.Initialise();
 
 	CreateObjects();
@@ -488,7 +488,7 @@ int main()
     	shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
     	rockTexture4.UseTexture();
     	rock4.RenderModelWithoutAssimp();
-	    //
+
     	// rock 5
     	model = glm::mat4(1.0f);
     	model = glm::translate(model, glm::vec3(-11.0f, 0.0f, 4.0f));
