@@ -10,6 +10,35 @@ void Model::LoadModelWithoutAssimp(const std::string &fileName) {
 
     // Use OBJLoader to parse the OBJ file
     if (OBJLoader::LoadOBJ(fileName, vertices, indices)) {
+        std::string mtlFilePath = fileName.substr(0, fileName.find_last_of(".")) + ".mtl";
+        printf("[DEBUG] Load material : %s\n", mtlFilePath.c_str());
+        auto materials = OBJLoader::LoadMTL(mtlFilePath);
+
+        // For each mesh, load texture based on its material
+        for (auto &mat : materials) {
+            if (!mat.second.map_Kd.empty()) {
+                std::string texturePath = mat.second.map_Kd; // Adjust path
+                printf("[DEBUG] Load texture Kd: %s\n", texturePath.c_str());
+                auto *newTexture = new Texture(texturePath.c_str());
+                newTexture->LoadTextureA();
+                textureList.push_back(newTexture);
+            }
+            if (!mat.second.map_Ka.empty()) {
+                std::string texturePath = mat.second.map_Ka; // Adjust path
+                printf("[DEBUG] Load texture Ka: %s\n", texturePath.c_str());
+                auto *newTexture = new Texture(texturePath.c_str());
+                newTexture->LoadTextureA();
+                textureList.push_back(newTexture);
+            }
+            if (!mat.second.map_Ks.empty()) {
+                std::string texturePath = mat.second.map_Ks; // Adjust path
+                printf("[DEBUG] Load texture Ks: %s\n", texturePath.c_str());
+                auto *newTexture = new Texture(texturePath.c_str());
+                newTexture->LoadTextureA();
+                textureList.push_back(newTexture);
+            }
+        }
+
         // Attribute sizes: Position(3), Texture Coordinates(2), Normals(3)
         attributeSizes = {3, 2, 3};
 
@@ -41,8 +70,12 @@ void Model::LoadModelWithoutAssimp(const std::string &fileName) {
 }
 
 void Model::RenderModelWithoutAssimp() const {
-    for (const auto &mesh : meshList) {
-        mesh->RenderMesh();
+    for (size_t i = 0; i < meshList.size(); ++i) {
+        if (i < textureList.size() && textureList[i]) {
+            textureList[i]->UseTexture(); // Bind the texture
+        }
+
+        meshList[i]->RenderMesh();
     }
 }
 

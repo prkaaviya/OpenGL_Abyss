@@ -12,7 +12,7 @@ bool OBJLoader::LoadOBJ(const std::string& filePath, std::vector<Vertex>& outVer
 
     std::ifstream file(filePath);
     if (!file.is_open()) {
-        std::cerr << "Failed to open OBJ file: " << filePath << std::endl;
+        printf("ERROR: Failed to open OBJ file: %s\n", filePath.c_str());
         return false;
     }
 
@@ -30,6 +30,7 @@ bool OBJLoader::LoadOBJ(const std::string& filePath, std::vector<Vertex>& outVer
         else if (prefix == "vt") { // Texture coordinate
             glm::vec2 tex;
             s >> tex.x >> tex.y;
+            printf("[DEBUG] Loading texture coordinates: %f, %f\n", tex.x, tex.y);
             texCoords.push_back(tex);
         }
         else if (prefix == "vn") { // Normal
@@ -67,4 +68,41 @@ bool OBJLoader::LoadOBJ(const std::string& filePath, std::vector<Vertex>& outVer
 
     file.close();
     return true;
+}
+
+
+std::unordered_map<std::string, MaterialMTL> OBJLoader::LoadMTL(const std::string& mtlFilePath) {
+    std::unordered_map<std::string, MaterialMTL> materials;
+    std::ifstream file(mtlFilePath);
+    std::string line, prefix;
+
+    MaterialMTL currentMaterial;
+
+    while (std::getline(file, line)) {
+        std::istringstream iss(line);
+        iss >> prefix;
+
+        if (prefix == "newmtl") {
+            if (!currentMaterial.name.empty()) {
+                materials[currentMaterial.name] = currentMaterial;
+            }
+            iss >> currentMaterial.name;
+            currentMaterial.map_Ka = "";
+            currentMaterial.map_Kd = "";
+            currentMaterial.map_Ks = "";
+        } else if (prefix == "map_Ka") {
+            iss >> currentMaterial.map_Ka;
+        } else if (prefix == "map_Kd") {
+            iss >> currentMaterial.map_Kd;
+        } else if (prefix == "map_Ks") {
+            iss >> currentMaterial.map_Ks;
+        }
+    }
+
+    // Save the last material
+    if (!currentMaterial.name.empty()) {
+        materials[currentMaterial.name] = currentMaterial;
+    }
+
+    return materials;
 }

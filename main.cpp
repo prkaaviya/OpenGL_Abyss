@@ -39,13 +39,9 @@ Texture waterTexture;
 Material shinyMaterial;
 Material dullMaterial;
 
-Model xwing;
-Model blackhawk;
-
-Model coralPillar;
 Model hut;
-
 Model angelFish;
+Model coralPillar;
 
 DirectionalLight mainLight;
 PointLight pointLights[MAX_POINT_LIGHTS];
@@ -202,14 +198,6 @@ int main()
 	shinyMaterial = Material(4.0f, 256);
 	dullMaterial = Material(0.3f, 4);
 
-	// xwing = Model();
-	// printf("[DEBUG] Loading xwing model.\n");
-	// xwing.LoadModel("/Users/prkaaviya/CLionProjects/try8/Models/x-wing.obj");
-	//
-	// blackhawk = Model();
-	// printf("[DEBUG] Loading blackhawk model.\n");
-	// blackhawk.LoadModel("/Users/prkaaviya/CLionProjects/try8/Models/uh60.obj");
-	//
 	coralPillar = Model();
 	printf("[DEBUG] Loading coral pillar model.\n");
 	coralPillar.LoadModelWithoutAssimp("/Users/prkaaviya/CLionProjects/try8/Models/coral_pillar.obj");
@@ -292,65 +280,54 @@ int main()
 		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
 		glUniform3f(uniformEyePosition, camera.getCameraPosition().x, camera.getCameraPosition().y, camera.getCameraPosition().z);
 
+    	// render container
 		glm::mat4 model(1.0f);
-		model = glm::translate(model, glm::vec3(0.0f, 0.4f, -2.5f));
+		model = glm::translate(model, glm::vec3(6.6f, 0.4f, -5.5f));
 		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
     	containerTexture.UseTexture();
 		shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
     	meshList[0]->RenderMesh();
 
+    	// render metal box
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(3.0f, 0.4f, -2.5f));
+		model = glm::translate(model, glm::vec3(6.6f, 0.4f, -6.5f));
 		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		dullMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
     	metalBoxTexture.UseTexture();
     	meshList[1]->RenderMesh();
 
+    	// render floor for view
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
-		// model = glm::scale(model, glm::vec3(0.4f, 0.4f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		plainTexture.UseTexture();
 		shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[2]->RenderMesh();
 
-		// model = glm::mat4(1.0f);
-		// model = glm::translate(model, glm::vec3(-7.0f, 0.0f, 10.0f));
-		// model = glm::scale(model, glm::vec3(0.006f, 0.006f, 0.006f));
-		// glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		// shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
-		// xwing.RenderModel();
-		//
-		// model = glm::mat4(1.0f);
-		// model = glm::translate(model, glm::vec3(-3.0f, 2.0f, 0.0f));
-		// model = glm::rotate(model, -90.0f * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
-		// model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
-		// glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		// shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
-		// blackhawk.RenderModel();
-
-
+    	// render corals
     	model = glm::mat4(1.0f);
-    	model = glm::translate(model, glm::vec3(-6.0f, 0.4f, -2.5f));
+    	model = glm::translate(model, glm::vec3(-3.0f, 0.0f, -5.5f));
     	model = glm::rotate(model, -90.0f * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
     	model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
     	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-    	waterTexture.UseTexture();
     	shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
     	coralPillar.RenderModelWithoutAssimp();
 
+    	// render hut
     	model = glm::mat4(1.0f);
-    	model = glm::translate(model, glm::vec3(-12.0f, 0.4f, -2.5f));
+    	model = glm::translate(model, glm::vec3(3.0f, 0.0f, -5.5f));
     	model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
     	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
     	hut.RenderModelWithoutAssimp();
 
+    	// render angel fish
     	model = glm::mat4(1.0f);
     	model = glm::translate(model, glm::vec3(8.0f, 0.4f, -2.5f));
-    	// model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+    	model = glm::rotate(model, -90.0f * toRadians, glm::vec3(0.0, 0.0f, 1.0f));
     	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+    	shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
     	angelFish.RenderModelWithoutAssimp();
 
 		glUseProgram(0);
